@@ -21,14 +21,17 @@ def on_connect(subs, obj, flags, rc):
 
 def on_message(subs, obj, msg):
     f = open("demofile2.txt", "a")
-    f.writelines(str(msg.payload))
+    data = msg.payload.decode()    
+    data = json.loads(data)
+    f.writelines(json.dumps(data, indent = 4))
+    f.writelines('\n')
     f.close()
-    print(msg.topic + " " + str(msg.payload))
-    # data = data.decode()    
-    # data = json.loads(data)
+    print(msg.topic + " " + str(data))
+    
     # WifiDeviceInfo.objects.create(**data)
     publisher = server_mqtt.Client("PUBLISHER")
-    publisher.username_pw_set(username="airpro_mqtt_server",password="Y3VDWxsijgfuXdE")
+    subs.connect(broker, port)
+    # publisher.username_pw_set(username="airpro_mqtt_server",password="Y3VDWxsijgfuXdE")
     publisher.publish(msg.topic,"msg recived")
 
     

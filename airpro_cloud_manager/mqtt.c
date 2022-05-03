@@ -6,7 +6,7 @@ void airpro_recv_data_handler(struct airpro_cm_handle *cm, char *topic, char *pa
 void airpro_message_callback(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg)
 {
     struct airpro_cm_handle *cm = (struct airpro_cm_handle *)obj;
-
+    printf("message_callback\n");
     if (msg->payloadlen) {
         cm->airpro_sub_handler(cm, msg->topic, msg->payload, msg->payloadlen);
     }
@@ -20,7 +20,7 @@ void airpro_connect_callback(struct mosquitto *mosq, void *obj, int rc)
     struct airpro_cm_handle *cm = (struct airpro_cm_handle *)obj;
     char subtopic[128];
     int payloadlen = 0;
-
+    printf("airpro_connect_callback\n");
     if (rc) {
         printf("Error with result code: %d\n", rc);
         return;
@@ -38,10 +38,11 @@ int airpro_publish_data(struct airpro_cm_handle *cm, char *buf, int len)
     char topic_name[128];
 
     memset(topic_name, 0, sizeof(topic_name));
-    sprintf(topic_name, "airpro/dev_to_cloud");
-
+    sprintf(topic_name, "airpro/dev/to/cloud");
+    printf("publishing\n");
     printf("Client Publishing: topic=%s len=%d msg=%s\n", topic_name, len, buf);
     mosquitto_publish(cm->mosq, NULL, topic_name, len, buf, 0, false);
+    //mosquitto_loop_forever(cm->mosq, -1, 1);
 }
 
 int airpro_do_mqtt_init(struct airpro_cm_handle *cm)
@@ -56,7 +57,9 @@ int airpro_do_mqtt_init(struct airpro_cm_handle *cm)
     while (1) {
         struct timeval tv;
         rc = mosquitto_connect(cm->mosq, cm->broker.ip_addr, cm->broker.port_num, 60);
+        
         if (rc == MOSQ_ERR_SUCCESS) {
+            printf("Connection Ok\n");
             break;
         }
         printf("COULD NOT CONNECT: %d\n", rc);
@@ -65,7 +68,7 @@ int airpro_do_mqtt_init(struct airpro_cm_handle *cm)
         select(0, NULL, NULL, NULL, &tv);
     }
 
-    //rc = mosquitto_loop_forever(cm->mosq, -1, 1);
+    rc = mosquitto_loop_start(cm->mosq);
 
     return 0;
 }

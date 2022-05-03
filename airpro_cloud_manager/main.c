@@ -14,7 +14,8 @@ void airpro_recv_data_handler(struct airpro_cm_handle *cm, char *topic, char *pa
 
 void airpro_fetch_broker_details(struct airpro_cm_handle *cm)
 {
-    strcpy(cm->broker.ip_addr, "127.0.0.1");
+     strcpy(cm->broker.ip_addr, "122.170.105.253");
+    //strcpy(cm->broker.ip_addr, "127.0.0.1");
     // cm->broker.port_num = 8520;
     cm->broker.port_num = 1883;
 }
@@ -24,7 +25,6 @@ int main()
     struct airpro_sm *sm = &cm.sm;
     int delay_time = AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT;
     int res = -1;
-
     pthread_mutex_init(&sm->lock, NULL); //header pthread for multithreading
     pthread_cond_init(&sm->cond, NULL);  //header pthread for multithreading
 
@@ -53,13 +53,14 @@ int main()
                     sm->state |= AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY;
                     continue;
                 }
-                sm->state |= AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT;
+                //changes
+                sm->state = AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT;
             } break;
             case AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT: {
                 char buf[1024];
-                int len = 0;
-
-                airpro_publish_data(&cm, buf, len);
+                int len = 102;
+                char* jsonObj = "{\"serial_number\":\"7821796924\",\"mac_address\":\"00:1b:21:bc:30:ae\",\"alpn\":\"2.5\",\"type\":\"6\"}";
+                airpro_publish_data(&cm, jsonObj, strlen(jsonObj));
             } break;
         }
     }

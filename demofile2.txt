@@ -1,0 +1,36 @@
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}
+{
+    "serial_number": "7821796924",
+    "mac_address": "00:1b:21:bc:30:ae",
+    "alpn": "2.5",
+    "type": "6"
+}

@@ -16,5 +16,5 @@ print("connected")
 # publisher.username_pw_set(username="steve",password="password")
 publisher.connect(broker,port)
 
-publisher.publish("airpro/dev/to/cloud","hiii from client - times")
+publisher.publish("airpro/dev/to/cloud","hiii ")
 
