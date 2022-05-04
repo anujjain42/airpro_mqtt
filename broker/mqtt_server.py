@@ -11,8 +11,8 @@ port = 1883
 def on_connect(subs, obj, flags, rc):
     if rc==0:
         subs.connected_flag=True #set flag
-        print("connected OK")
-        print("rc :" + str(rc))
+        # print("connected OK")
+        # print("rc :" + str(rc))
         subs.subscribe("airpro/dev/to/cloud")
     else:
         print("Bad connection Returned code=",rc)

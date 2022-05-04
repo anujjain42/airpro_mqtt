@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AIRPRO_CLOUD_MANAGER_SRC	Makefile	/^AIRPRO_CLOUD_MANAGER_SRC:= main.c device_discovery.c mqtt.c$/;"	m
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY	cm.h	6;"	d
+AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT	cm.h	7;"	d
+AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT	cm.h	9;"	d
+CC	Makefile	/^CC= gcc$/;"	m
+__AIRPRO_CM_H_	cm.h	2;"	d
+airpro_broker	cm.h	/^struct airpro_broker {$/;"	s
+airpro_cm_handle	cm.h	/^struct airpro_cm_handle {$/;"	s
+airpro_connect_callback	mqtt.c	/^void airpro_connect_callback(struct mosquitto *mosq, void *obj, int rc)$/;"	f
+airpro_do_mqtt_init	mqtt.c	/^int airpro_do_mqtt_init(struct airpro_cm_handle *cm)$/;"	f
+airpro_fetch_broker_details	main.c	/^void airpro_fetch_broker_details(struct airpro_cm_handle *cm)$/;"	f
+airpro_message_callback	mqtt.c	/^void airpro_message_callback(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg)$/;"	f
+airpro_publish_data	mqtt.c	/^int airpro_publish_data(struct airpro_cm_handle *cm, char *buf, int len)$/;"	f
+airpro_recv_data_handler	main.c	/^void airpro_recv_data_handler(struct airpro_cm_handle *cm, char *topic, char *payload, int payloadlen)$/;"	f
+airpro_recv_http_resp_cb	device_discovery.c	/^static size_t airpro_recv_http_resp_cb(void *data, size_t size, size_t nmemb, void *userp)$/;"	f	file:
+airpro_send_recv_device_discovery	device_discovery.c	/^int airpro_send_recv_device_discovery(struct airpro_cm_handle *cm)$/;"	f
+airpro_sm	cm.h	/^struct airpro_sm {$/;"	s
+airpro_sub_handler	cm.h	/^    void (*airpro_sub_handler)(struct airpro_cm_handle *cm, char *topic, char *payload, int payloadlen);$/;"	m	struct:airpro_cm_handle
+airpro_sub_thread	test.c	/^void airpro_sub_thread(void *arg)$/;"	f
+airpro_validate_http_resp	device_discovery.c	/^int airpro_validate_http_resp(char *http_msg, int http_msg_len)$/;"	f
+bind_address	cm.h	/^    char *bind_address;$/;"	m	struct:mosq_config
+broker	cm.h	/^    struct airpro_broker broker;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::airpro_broker
+cfg	cm.h	/^    struct mosq_config cfg;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::mosq_config
+cm	main.c	/^struct airpro_cm_handle cm;$/;"	v	typeref:struct:airpro_cm_handle
+cond	cm.h	/^    pthread_cond_t cond;$/;"	m	struct:airpro_sm
+dev	cm.h	/^    struct device_info dev;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::device_info
+device_info	cm.h	/^struct device_info {$/;"	s
+do_exit	main.c	/^int do_exit;$/;"	v
+file_input	cm.h	/^    char *file_input; \/* pub *\/$/;"	m	struct:mosq_config
+hdd	cm.h	/^    struct http_device_discovery hdd;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::http_device_discovery
+host	cm.h	/^    char *host;$/;"	m	struct:mosq_config
+http_device_discovery	cm.h	/^struct http_device_discovery {$/;"	s
+http_msg	cm.h	/^    char http_msg[1024];$/;"	m	struct:http_device_discovery
+http_msg_len	cm.h	/^    int http_msg_len;$/;"	m	struct:http_device_discovery
+id	cm.h	/^    char *id;$/;"	m	struct:mosq_config
+id_prefix	cm.h	/^    char *id_prefix;$/;"	m	struct:mosq_config
+ip_addr	cm.h	/^    char ip_addr[64];$/;"	m	struct:airpro_broker
+ip_addr	cm.h	/^    char ip_addr[64];$/;"	m	struct:device_info
+keepalive	cm.h	/^    int keepalive;$/;"	m	struct:mosq_config
+lock	cm.h	/^    pthread_mutex_t lock;$/;"	m	struct:airpro_sm
+macaddr	cm.h	/^    unsigned char macaddr[6];$/;"	m	struct:device_info
+main	main.c	/^int main()$/;"	f
+main	test.c	/^int main()$/;"	f
+mosq	cm.h	/^    struct mosquitto *mosq;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::mosquitto
+mosq_config	cm.h	/^struct mosq_config {$/;"	s
+msglen	cm.h	/^    long msglen; \/* pub *\/$/;"	m	struct:mosq_config
+on_connect	test.c	/^void on_connect(struct mosquitto *mosq, void *obj, int rc)$/;"	f
+on_message	test.c	/^void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg)$/;"	f
+port	cm.h	/^    int port;$/;"	m	struct:mosq_config
+port_num	cm.h	/^    int port_num;$/;"	m	struct:airpro_broker
+protocol_version	cm.h	/^    int protocol_version;$/;"	m	struct:mosq_config
+pub_mode	cm.h	/^    int pub_mode; \/* pub *\/$/;"	m	struct:mosq_config
+qos	cm.h	/^    int qos;$/;"	m	struct:mosq_config
+retain	cm.h	/^    bool retain;$/;"	m	struct:mosq_config
+serial_num	cm.h	/^    char serial_num[64];$/;"	m	struct:device_info
+sm	cm.h	/^    struct airpro_sm sm;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::airpro_sm
+state	cm.h	/^    int state;$/;"	m	struct:airpro_sm
+topic	cm.h	/^    char *topic; \/* pub *\/$/;"	m	struct:mosq_config

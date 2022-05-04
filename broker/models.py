@@ -36,20 +36,20 @@ class BaseModel(models.Model):
 class WifiDeviceInfo(BaseModel):
     pass
 
-    def __str__(self) -> str:
-        return self.device_id
+    # def __str__(self) -> str:
+    #     return str(self.device_id)
 
 class NetworkDeviceInfo(BaseModel):
     pass
 
-    def __str__(self) -> str:
-        return self.device_id
+    # def __str__(self) -> str:
+    #     return self.device_id
 
 class SystemDeviceInfo(BaseModel):
     pass
 
-    def __str__(self) -> str:
-        return self.device_id
+    # def __str__(self) -> str:
+    #     return self.device_id
 
 class BrokerDetails(models.Model):
     broker_ip = models.GenericIPAddressField()

@@ -18,7 +18,7 @@ void airpro_message_callback(struct mosquitto *mosq, void *obj, const struct mos
 void airpro_connect_callback(struct mosquitto *mosq, void *obj, int rc)
 {
     struct airpro_cm_handle *cm = (struct airpro_cm_handle *)obj;
-    char subtopic[128];
+    char subtopic[255];
     int payloadlen = 0;
     printf("airpro_connect_callback\n");
     if (rc) {
@@ -27,8 +27,9 @@ void airpro_connect_callback(struct mosquitto *mosq, void *obj, int rc)
     }
     
     memset(subtopic, 0, sizeof(subtopic));
-    sprintf(subtopic, "airpro/device_%02x:%02x:%02x:%02x:%02x:%02x", cm->dev.macaddr[0], cm->dev.macaddr[1],
-          cm->dev.macaddr[2], cm->dev.macaddr[3], cm->dev.macaddr[4], cm->dev.macaddr[5]);
+    sprintf(subtopic, "airpro/device_00:1b:21:bc:30:ae");
+    //sprintf(subtopic, "airpro/device_%02x:%02x:%02x:%02x:%02x:%02x", cm->dev.macaddr[0], cm->dev.macaddr[1],
+    //      cm->dev.macaddr[2], cm->dev.macaddr[3], cm->dev.macaddr[4], cm->dev.macaddr[5]);
     printf("Anjan: subtopic=%s\n", subtopic);
     mosquitto_subscribe(mosq, NULL, subtopic, 0);
 }
@@ -39,8 +40,7 @@ int airpro_publish_data(struct airpro_cm_handle *cm, char *buf, int len)
 
     memset(topic_name, 0, sizeof(topic_name));
     sprintf(topic_name, "airpro/dev/to/cloud");
-    printf("publishing\n");
-    printf("Client Publishing: topic=%s len=%d msg=%s\n", topic_name, len, buf);
+    printf("!!!! Client Publishing: topic=%s len=%d msg=%s\n", topic_name, len, buf);
     mosquitto_publish(cm->mosq, NULL, topic_name, len, buf, 0, false);
     //mosquitto_loop_forever(cm->mosq, -1, 1);
 }

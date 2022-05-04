@@ -6,10 +6,11 @@ int do_exit;
 
 int airpro_send_recv_device_discovery(struct airpro_cm_handle *cm);
 int airpro_publish_data(struct airpro_cm_handle *cm, char *buf, int len);
+int airpro_do_mqtt_init(struct airpro_cm_handle *cm);
 
 void airpro_recv_data_handler(struct airpro_cm_handle *cm, char *topic, char *payload, int payloadlen)
 {
-    printf("recv: topic=%s payloadlen=%d\n", topic, payloadlen);
+    printf("!!!!! recv: topic=%s payloadlen=%d\n", topic, payloadlen);
 }
 
 void airpro_fetch_broker_details(struct airpro_cm_handle *cm)
