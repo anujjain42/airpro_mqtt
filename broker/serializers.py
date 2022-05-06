@@ -28,6 +28,6 @@ class DeviceRegisterSerializer(ModelSerializer):
 
 class BrokerDetailsSerializer(ModelSerializer):
     class Meta:
-        model = BrokerDetails
+        model = BrokerDetail
         fields = '__all__'
 

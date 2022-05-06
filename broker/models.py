@@ -36,26 +36,35 @@ class BaseModel(models.Model):
 class WifiDeviceInfo(BaseModel):
     pass
 
-    # def __str__(self) -> str:
-    #     return str(self.device_id)
+    def __str__(self) -> str:
+        return str(self.device_id.mac_address)
 
 class NetworkDeviceInfo(BaseModel):
     pass
 
-    # def __str__(self) -> str:
-    #     return self.device_id
+    def __str__(self) -> str:
+        return str(self.device_id.mac_address)
 
 class SystemDeviceInfo(BaseModel):
     pass
 
-    # def __str__(self) -> str:
-    #     return self.device_id
+    def __str__(self) -> str:
+        return str(self.device_id.mac_address)
 
-class BrokerDetails(models.Model):
+class BrokerDetail(models.Model):
     broker_ip = models.GenericIPAddressField()
+    port = models.IntegerField(default=1883)
     username = models.CharField(max_length=255,unique=True)
     password = models.CharField(max_length=255)
     server_topic = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.username
+
+class BrokerDeviceTopic(models.Model):
+    broker = models.ForeignKey(to=BrokerDetail,on_delete=models.SET_NULL,blank=True, null=True)
+    device = models.ForeignKey(to=Device,on_delete=models.SET_NULL,blank=True, null=True)
+    device_topic = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.device_topic

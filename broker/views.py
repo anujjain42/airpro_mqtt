@@ -23,7 +23,7 @@ class DeviceViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         data =  request.data
         obj = Device.objects.filter(**data) 
-        broker_obj = BrokerDetails.objects.get(id=1)
+        broker_obj = BrokerDetail.objects.get(id=1)
         ser = BrokerDetailsSerializer(broker_obj).data
         if len(obj):
             device_id = obj[0].device_id
