@@ -2,6 +2,15 @@ import uuid
 from django.db import models
 
 # Create your models here.
+class UnregisteredDevice(models.Model):
+
+    serial_number   = models.CharField(max_length=255)
+    alias           = models.CharField(max_length=255)
+    status          = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.serial_number
+    
 
 class Device(models.Model):
     id              = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
@@ -24,7 +33,7 @@ class BaseModel(models.Model):
     ver             = models.CharField(max_length=255, blank=True, null=True)
     timestamp       = models.CharField(max_length=255, blank=True, null=True)
     token           = models.CharField(max_length=255, blank=True, null=True)   
-    ip_address      = models.GenericIPAddressField()
+    ip_address      = models.GenericIPAddressField(blank=True, null=True)
     status          = models.CharField(max_length=255, blank=True, null=True)
     request_Id      = models.CharField(max_length=255, blank=True, null=True)
     updated_time    = models.DateTimeField(auto_now=True)
@@ -45,6 +54,7 @@ class NetworkDeviceInfo(BaseModel):
     def __str__(self) -> str:
         return str(self.device_id.mac_address)
 
+
 class SystemDeviceInfo(BaseModel):
     pass
 
@@ -52,18 +62,18 @@ class SystemDeviceInfo(BaseModel):
         return str(self.device_id.mac_address)
 
 class BrokerDetail(models.Model):
-    broker_ip = models.GenericIPAddressField()
-    port = models.IntegerField(default=1883)
-    username = models.CharField(max_length=255,unique=True)
-    password = models.CharField(max_length=255)
+    broker_ip   = models.GenericIPAddressField()
+    port        = models.IntegerField(default=1883)
+    username    = models.CharField(max_length=255,unique=True)
+    password    = models.CharField(max_length=255)
     server_topic = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.username
 
 class BrokerDeviceTopic(models.Model):
-    broker = models.ForeignKey(to=BrokerDetail,on_delete=models.SET_NULL,blank=True, null=True)
-    device = models.ForeignKey(to=Device,on_delete=models.SET_NULL,blank=True, null=True)
+    broker      = models.ForeignKey(to=BrokerDetail,on_delete=models.SET_NULL,blank=True, null=True)
+    device      = models.ForeignKey(to=Device,on_delete=models.SET_NULL,blank=True, null=True)
     device_topic = models.CharField(max_length=255)
 
     def __str__(self) -> str:

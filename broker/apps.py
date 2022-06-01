@@ -7,3 +7,4 @@ class BrokerConfig(AppConfig):
 
     def ready(self):
         import broker.signals
+        from broker import mqtt_server

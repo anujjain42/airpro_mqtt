@@ -32,7 +32,7 @@ int airpro_send_recv_device_discovery(struct airpro_cm_handle *cm)
     headers = curl_slist_append(headers, "Content-Type: application/json");
     headers = curl_slist_append(headers, "charset: utf-8");
     if(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, "http://122.170.105.253:8520/api/devices/");
+        curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:8520/api/devices/");
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonObj);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, airpro_recv_http_resp_cb);

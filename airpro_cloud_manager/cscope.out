@@ -1,0 +1,2215 @@
+cscope 15 $HOME/projects/airpro/git/airpro/airpro_apps/airpro_src/airpro_cloud_manager               0000013718
+	@cm.h
+
+1 #i‚de‡
+__AIRPRO_CM_H__
+
+
+2 
+	#__AIRPRO_CM_H_
+
+
+	)
+
+4 
+	~<mosquôto.h
+>
+
+6 
+	#AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY
+ 1
+
+	)
+
+7 
+	#AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT
+ 2
+
+	)
+
+9 
+	#AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT
+ 5
+
+	)
+
+11 
+	smosq_c⁄fig
+ {
+
+12 *
+	mid
+;
+
+13 *
+	mid_¥efix
+;
+
+14 
+	m¥Ÿocﬁ_vîsi⁄
+;
+
+15 
+	mkì∑live
+;
+
+16 *
+	mho°
+;
+
+17 
+	mp‹t
+;
+
+18 
+	mqos
+;
+
+19 
+boﬁ
+ 
+	mªèö
+;
+
+20 
+	mpub_mode
+;
+
+21 *
+	mfûe_öput
+;
+
+22 
+	mmsgÀn
+;
+
+23 *
+	mt›ic
+;
+
+24 *
+	mböd_addªss
+;
+
+27 
+	saú¥o_sm
+ {
+
+28 
+	m°©e
+;
+
+29 
+±hªad_muãx_t
+ 
+	mlock
+;
+
+30 
+±hªad_c⁄d_t
+ 
+	mc⁄d
+;
+
+33 
+	shâp_devi˚_discovîy
+ {
+
+34 
+	mhâp_msg
+[1024];
+
+35 
+	mhâp_msg_Àn
+;
+
+38 
+	sdevi˚_öfo
+ {
+
+39 
+	mmaˇddr
+[6];
+
+40 
+	mù_addr
+[64];
+
+41 
+	m£rül_num
+[64];
+
+44 
+	saú¥o_brokî
+ {
+
+45 
+	mp‹t_num
+;
+
+46 
+	mù_addr
+[64];
+
+49 
+	saú¥o_cm_h™dÀ
+ {
+
+50 
+mosq_c⁄fig
+ 
+	mcfg
+;
+
+51 
+aú¥o_sm
+ 
+	msm
+;
+
+52 
+hâp_devi˚_discovîy
+ 
+	mhdd
+;
+
+53 
+aú¥o_brokî
+ 
+	mbrokî
+;
+
+54 
+devi˚_öfo
+ 
+	mdev
+;
+
+55 
+mosquôto
+ *
+	mmosq
+;
+
+56 (*
+	maú¥o_sub_h™dÀr
+)(
+aú¥o_cm_h™dÀ
+ *
+	mcm
+, *
+	mt›ic
+, *
+	m∑ylﬂd
+, 
+	m∑ylﬂdÀn
+);
+
+	@device_discovery.c
+
+1 
+	~<comm⁄.h
+>
+
+2 
+	~<aú¥o_mgr_msg.h
+>
+
+3 
+	~"cm.h
+"
+
+4 
+	~<cuæ/cuæ.h
+>
+
+6 
+	$aú¥o_vÆid©e_hâp_ª•
+(*
+hâp_msg
+, 
+hâp_msg_Àn
+)
+
+9 
+	}
+}
+
+11 
+size_t
+ 
+	$aú¥o_ªcv_hâp_ª•_cb
+(*
+d©a
+, 
+size_t
+ 
+size
+, size_à
+nmemb
+, *
+u£Ω
+)
+
+13 
+aú¥o_cm_h™dÀ
+ *
+cm
+ = (aú¥o_cm_h™dÀ *)
+u£Ω
+;
+
+14 
+hâp_devi˚_discovîy
+ *
+hdd
+ = &
+cm
+->hdd;
+
+15 
+size_t
+ 
+ªÆsize
+ = 
+size
+ * 
+nmemb
+;
+
+17 
+	`mem£t
+(
+hdd
+->
+hâp_msg
+, 0, (hdd->http_msg));
+
+18 
+	`mem˝y
+(
+hdd
+->
+hâp_msg
+, 
+d©a
+, 
+ªÆsize
+);
+
+19 
+hdd
+->
+hâp_msg_Àn
+ +
+ªÆsize
+;
+
+21  
+ªÆsize
+;
+
+22 
+	}
+}
+
+24 
+	$aú¥o_£nd_ªcv_devi˚_discovîy
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+)
+
+26 
+cuæ_¶i°
+ *
+hódîs
+ = 
+NULL
+;
+
+27 
+CURL
+ *
+cuæ
+;
+
+28 
+CURLcode
+ 
+ªs
+;
+
+30 
+cuæ
+ = 
+	`cuæ_ósy_öô
+();
+
+31 * 
+js⁄Obj
+ = "{\"serial_number\":\"7821796924\",\"mac_address\":\"00:1b:21:bc:30:ae\",\"alpn\":\"2.5\",\"type\":\"6\"}";
+
+32 
+hódîs
+ = 
+	`cuæ_¶i°_≠≥nd
+(headers, "Accept:ápplication/json");
+
+33 
+hódîs
+ = 
+	`cuæ_¶i°_≠≥nd
+(headers, "Content-Type:ápplication/json");
+
+34 
+hódîs
+ = 
+	`cuæ_¶i°_≠≥nd
+(headers, "charset: utf-8");
+
+35 if(
+cuæ
+) {
+
+36 
+	`cuæ_ósy_£t›t
+(
+cuæ
+, 
+CURLOPT_URL
+, "http://122.170.105.253:8520/api/devices/");
+
+37 
+	`cuæ_ósy_£t›t
+(
+cuæ
+, 
+CURLOPT_HTTPHEADER
+, 
+hódîs
+);
+
+38 
+	`cuæ_ósy_£t›t
+(
+cuæ
+, 
+CURLOPT_POSTFIELDS
+, 
+js⁄Obj
+);
+
+39 
+	`cuæ_ósy_£t›t
+(
+cuæ
+, 
+CURLOPT_WRITEFUNCTION
+, 
+aú¥o_ªcv_hâp_ª•_cb
+);
+
+40 
+	`cuæ_ósy_£t›t
+(
+cuæ
+, 
+CURLOPT_WRITEDATA
+, (*)
+cm
+);
+
+42 
+ªs
+ = 
+	`cuæ_ósy_≥rf‹m
+(
+cuæ
+);
+
+43 i‡(
+ªs
+ !
+CURLE_OK
+) {
+
+44 
+	`Ârötf
+(
+°dîr
+, "cuæ_ósy_≥rf‹m(ËÁûed: %s\n", 
+	`cuæ_ósy_°ªº‹
+(
+ªs
+));
+
+45 
+	`cuæ_ósy_˛ónup
+(
+cuæ
+);
+
+48 
+	`cuæ_ósy_˛ónup
+(
+cuæ
+);
+
+50 
+ªs
+ = 
+	`aú¥o_vÆid©e_hâp_ª•
+(
+cm
+->
+hdd
+.
+hâp_msg
+, cm->hdd.
+hâp_msg_Àn
+);
+
+51 i‡(
+ªs
+ != 0) {
+
+56 
+	}
+}
+
+	@main.c
+
+1 
+	~<comm⁄.h
+>
+
+2 
+	~<aú¥o_mgr_msg.h
+>
+
+3 
+	~"cm.h
+"
+
+5 
+aú¥o_cm_h™dÀ
+ 
+	gcm
+;
+
+6 
+	gdo_exô
+;
+
+8 
+aú¥o_£nd_ªcv_devi˚_discovîy
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+);
+
+9 
+aú¥o_publish_d©a
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+, *
+buf
+, 
+Àn
+);
+
+11 
+	$aú¥o_ªcv_d©a_h™dÀr
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+, *
+t›ic
+, *
+∑ylﬂd
+, 
+∑ylﬂdÀn
+)
+
+13 
+	`¥ötf
+("ªcv:Å›ic=%†∑ylﬂdÀn=%d\n", 
+t›ic
+, 
+∑ylﬂdÀn
+);
+
+14 
+	}
+}
+
+16 
+	$aú¥o_„tch_brokî_dëaûs
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+)
+
+18 
+	`°r˝y
+(
+cm
+->
+brokî
+.
+ù
+, "122.170.105.253");
+
+19 
+cm
+->
+brokî
+.
+p‹t_num
+ = 8520;
+
+20 
+	}
+}
+
+22 
+	$maö
+()
+
+24 
+aú¥o_sm
+ *
+sm
+ = &
+cm
+.sm;
+
+25 
+dñay_time
+ = 
+AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT
+;
+
+26 
+ªs
+ = -1;
+
+28 
+	`±hªad_muãx_öô
+(&
+sm
+->
+lock
+, 
+NULL
+);
+
+29 
+	`±hªad_c⁄d_öô
+(&
+sm
+->
+c⁄d
+, 
+NULL
+);
+
+31 
+	`aú¥o_„tch_brokî_dëaûs
+(&
+cm
+);
+
+32 
+sm
+->
+°©e
+ |
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY
+;
+
+34 !
+do_exô
+) {
+
+35 
+time•ec
+ 
+ts
+;
+
+37 
+	`˛ock_gëtime
+(
+CLOCK_REALTIME
+, &
+ts
+);
+
+38 
+ts
+.
+tv_£c
+ +
+dñay_time
+;
+
+39 
+ts
+.
+tv_n£c
+ = 0;
+
+40 
+	`±hªad_muãx_lock
+(&
+sm
+->
+lock
+);
+
+41 
+	`±hªad_c⁄d_timedwaô
+(&
+sm
+->
+c⁄d
+, &sm->
+lock
+, &
+ts
+);
+
+42 
+	`±hªad_muãx_u∆ock
+(&
+sm
+->
+lock
+);
+
+44 
+sm
+->
+°©e
+) {
+
+45 
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY
+: {
+
+46 
+ªs
+ = 
+	`aú¥o_£nd_ªcv_devi˚_discovîy
+(&
+cm
+);
+
+47 i‡(
+ªs
+ != 0) {
+
+48 
+sm
+->
+°©e
+ |
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY
+;
+
+51 
+ªs
+ = 
+	`aú¥o_do_mqâ_öô
+(&
+cm
+);
+
+52 i‡(
+ªs
+ != 0) {
+
+53 
+sm
+->
+°©e
+ |
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY
+;
+
+56 
+sm
+->
+°©e
+ |
+AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT
+;
+
+58 
+AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT
+: {
+
+59 
+buf
+[1024];
+
+60 
+Àn
+ = 0;
+
+62 
+	`aú¥o_publish_d©a
+(&
+cm
+, 
+buf
+, 
+Àn
+);
+
+66 
+	}
+}
+
+	@mqtt.c
+
+1 
+	~<comm⁄.h
+>
+
+2 
+	~<aú¥o_mgr_msg.h
+>
+
+3 
+	~"cm.h
+"
+
+5 
+aú¥o_ªcv_d©a_h™dÀr
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+, *
+t›ic
+, *
+∑ylﬂd
+, 
+∑ylﬂdÀn
+);
+
+7 
+	$aú¥o_mesßge_ˇŒback
+(
+mosquôto
+ *
+mosq
+, *
+obj
+, c⁄° 
+mosquôto_mesßge
+ *
+msg
+)
+
+9 
+aú¥o_cm_h™dÀ
+ *
+cm
+ = (aú¥o_cm_h™dÀ *)
+obj
+;
+
+11 i‡(
+msg
+->
+∑ylﬂdÀn
+) {
+
+12 
+cm
+->
+	`aú¥o_sub_h™dÀr
+(cm, 
+msg
+->
+t›ic
+, msg->
+∑ylﬂd
+, msg->
+∑ylﬂdÀn
+);
+
+15 
+	`¥ötf
+("%†“uŒ)\n", 
+msg
+->
+t›ic
+);
+
+17 
+	}
+}
+
+19 
+	$aú¥o_c⁄√˘_ˇŒback
+(
+mosquôto
+ *
+mosq
+, *
+obj
+, 
+rc
+)
+
+21 
+aú¥o_cm_h™dÀ
+ *
+cm
+ = (aú¥o_cm_h™dÀ *)
+obj
+;
+
+22 
+subt›ic
+[128];
+
+23 
+∑ylﬂdÀn
+ = 0;
+
+25 i‡(
+rc
+) {
+
+26 
+	`¥ötf
+("Eº‹ wôhÑesu… code: %d\n", 
+rc
+);
+
+30 
+	`mem£t
+(
+subt›ic
+, 0, (subtopic));
+
+31 
+	`•rötf
+(
+subt›ic
+, "aú¥o/devi˚_%02x:%02x:%02x:%02x:%02x:%02x", 
+cm
+->
+dev
+.
+maˇddr
+[0], cm->dev.macaddr[1],
+
+32 
+cm
+->
+dev
+.
+maˇddr
+[2], cm->dev.macaddr[3], cm->dev.macaddr[4], cm->dev.macaddr[5]);
+
+33 
+	`¥ötf
+("Anj™: subt›ic=%s\n", 
+subt›ic
+);
+
+34 
+	`mosquôto_subs¸ibe
+(
+mosq
+, 
+NULL
+, 
+subt›ic
+, 0);
+
+35 
+	}
+}
+
+37 
+	$aú¥o_publish_d©a
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+, *
+buf
+, 
+Àn
+)
+
+39 
+t›ic_«me
+[128];
+
+41 
+	`mem£t
+(
+t›ic_«me
+, 0, (topic_name));
+
+42 
+	`•rötf
+(
+t›ic_«me
+, "airpro/dev_to_cloud");
+
+44 
+	`¥ötf
+("Clõ¡ Publishög:Å›ic=%†Àn=%d msg=%s\n", 
+t›ic_«me
+, 
+Àn
+, 
+buf
+);
+
+45 
+	`mosquôto_publish
+(
+cm
+->
+mosq
+, 
+NULL
+, 
+t›ic_«me
+, 
+Àn
+, 
+buf
+, 0, 
+Ál£
+);
+
+46 
+	}
+}
+
+48 
+	$aú¥o_do_mqâ_öô
+(
+aú¥o_cm_h™dÀ
+ *
+cm
+)
+
+50 
+rc
+ = -1;
+
+52 
+	`mosquôto_lib_öô
+();
+
+53 
+cm
+->
+aú¥o_sub_h™dÀr
+ = 
+aú¥o_ªcv_d©a_h™dÀr
+;
+
+54 
+cm
+->
+mosq
+ = 
+	`mosquôto_√w
+(
+NULL
+, 
+åue
+, cm);
+
+55 
+	`mosquôto_c⁄√˘_ˇŒback_£t
+(
+cm
+->
+mosq
+, 
+aú¥o_c⁄√˘_ˇŒback
+);
+
+56 
+	`mosquôto_mesßge_ˇŒback_£t
+(
+cm
+->
+mosq
+, 
+aú¥o_mesßge_ˇŒback
+);
+
+58 
+timevÆ
+ 
+tv
+;
+
+59 
+rc
+ = 
+	`mosquôto_c⁄√˘
+(
+cm
+->
+mosq
+, cm->
+brokî
+.
+ù_addr
+, cm->brokî.
+p‹t_num
+, 60);
+
+60 i‡(
+rc
+ =
+MOSQ_ERR_SUCCESS
+) {
+
+63 
+	`¥ötf
+("COULD NOT CONNECT: %d\n", 
+rc
+);
+
+64 
+tv
+.
+tv_£c
+ = 2;
+
+65 
+tv
+.
+tv_u£c
+ = 0;
+
+66 
+	`£À˘
+(0, 
+NULL
+, NULL, NULL, &
+tv
+);
+
+70 
+	`mosquôto_de°roy
+(
+cm
+->
+mosq
+);
+
+71 
+	`mosquôto_lib_˛ónup
+();
+
+74 
+	}
+}
+
+	@/usr/include/mosquitto.h
+
+17 #i‚de‡
+_MOSQUITTO_H_
+
+
+18 
+	#_MOSQUITTO_H_
+
+
+	)
+
+20 #ifde‡
+__˝lu•lus
+
+
+24 #i‡
+deföed
+(
+WIN32
+Ë&& !deföed(
+WITH_BROKER
+)
+
+25 #ifde‡
+libmosquôto_EXPORTS
+
+
+26 
+	#libmosq_EXPORT
+ 
+	`__de˛•ec
+(
+dŒexp‹t
+)
+
+	)
+
+28 
+	#libmosq_EXPORT
+ 
+	`__de˛•ec
+(
+dŒimp‹t
+)
+
+	)
+
+31 
+	#libmosq_EXPORT
+
+
+	)
+
+34 #ifde‡
+WIN32
+
+
+35 #i‚de‡
+__˝lu•lus
+
+
+36 
+	#boﬁ
+ 
+
+	)
+
+37 
+	#åue
+ 1
+
+	)
+
+38 
+	#Ál£
+ 0
+
+	)
+
+41 #i‚de‡
+__˝lu•lus
+
+
+42 
+	~<°dboﬁ.h
+>
+
+46 
+	#LIBMOSQUITTO_MAJOR
+ 1
+
+	)
+
+47 
+	#LIBMOSQUITTO_MINOR
+ 4
+
+	)
+
+48 
+	#LIBMOSQUITTO_REVISION
+ 8
+
+	)
+
+50 
+	#LIBMOSQUITTO_VERSION_NUMBER
+ (
+LIBMOSQUITTO_MAJOR
+*1000000+
+LIBMOSQUITTO_MINOR
+*1000+
+LIBMOSQUITTO_REVISION
+)
+
+	)
+
+53 
+	#MOSQ_LOG_NONE
+ 0x00
+
+	)
+
+54 
+	#MOSQ_LOG_INFO
+ 0x01
+
+	)
+
+55 
+	#MOSQ_LOG_NOTICE
+ 0x02
+
+	)
+
+56 
+	#MOSQ_LOG_WARNING
+ 0x04
+
+	)
+
+57 
+	#MOSQ_LOG_ERR
+ 0x08
+
+	)
+
+58 
+	#MOSQ_LOG_DEBUG
+ 0x10
+
+	)
+
+59 
+	#MOSQ_LOG_SUBSCRIBE
+ 0x20
+
+	)
+
+60 
+	#MOSQ_LOG_UNSUBSCRIBE
+ 0x40
+
+	)
+
+61 
+	#MOSQ_LOG_WEBSOCKETS
+ 0x80
+
+	)
+
+62 
+	#MOSQ_LOG_ALL
+ 0xFFFF
+
+	)
+
+65 
+	emosq_îr_t
+ {
+
+66 
+MOSQ_ERR_CONN_PENDING
+ = -1,
+
+67 
+MOSQ_ERR_SUCCESS
+ = 0,
+
+68 
+MOSQ_ERR_NOMEM
+ = 1,
+
+69 
+MOSQ_ERR_PROTOCOL
+ = 2,
+
+70 
+MOSQ_ERR_INVAL
+ = 3,
+
+71 
+MOSQ_ERR_NO_CONN
+ = 4,
+
+72 
+MOSQ_ERR_CONN_REFUSED
+ = 5,
+
+73 
+MOSQ_ERR_NOT_FOUND
+ = 6,
+
+74 
+MOSQ_ERR_CONN_LOST
+ = 7,
+
+75 
+MOSQ_ERR_TLS
+ = 8,
+
+76 
+MOSQ_ERR_PAYLOAD_SIZE
+ = 9,
+
+77 
+MOSQ_ERR_NOT_SUPPORTED
+ = 10,
+
+78 
+MOSQ_ERR_AUTH
+ = 11,
+
+79 
+MOSQ_ERR_ACL_DENIED
+ = 12,
+
+80 
+MOSQ_ERR_UNKNOWN
+ = 13,
+
+81 
+MOSQ_ERR_ERRNO
+ = 14,
+
+82 
+MOSQ_ERR_EAI
+ = 15,
+
+83 
+MOSQ_ERR_PROXY
+ = 16,
+
+85 
+MOSQ_ERR_MALFORMED_UTF8
+ = 18
+
+89 
+	emosq_›t_t
+ {
+
+90 
+MOSQ_OPT_PROTOCOL_VERSION
+ = 1,
+
+94 
+	#MOSQ_MQTT_ID_MAX_LENGTH
+ 23
+
+	)
+
+96 
+	#MQTT_PROTOCOL_V31
+ 3
+
+	)
+
+97 
+	#MQTT_PROTOCOL_V311
+ 4
+
+	)
+
+99 
+	smosquôto_mesßge
+{
+
+100 
+mid
+;
+
+101 *
+t›ic
+;
+
+102 *
+∑ylﬂd
+;
+
+103 
+∑ylﬂdÀn
+;
+
+104 
+qos
+;
+
+105 
+boﬁ
+ 
+ªèö
+;
+
+108 
+mosquôto
+;
+
+162 
+libmosq_EXPORT
+ 
+mosquôto_lib_vîsi⁄
+(*
+maj‹
+, *
+mö‹
+, *
+ªvisi⁄
+);
+
+177 
+libmosq_EXPORT
+ 
+mosquôto_lib_öô
+();
+
+190 
+libmosq_EXPORT
+ 
+mosquôto_lib_˛ónup
+();
+
+221 
+libmosq_EXPORT
+ 
+mosquôto
+ *
+mosquôto_√w
+(c⁄° *
+id
+, 
+boﬁ
+ 
+˛ón_£ssi⁄
+, *
+obj
+);
+
+234 
+libmosq_EXPORT
+ 
+mosquôto_de°roy
+(
+mosquôto
+ *
+mosq
+);
+
+263 
+libmosq_EXPORT
+ 
+mosquôto_ªöôüli£
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+id
+, 
+boﬁ
+ 
+˛ón_£ssi⁄
+, *
+obj
+);
+
+288 
+libmosq_EXPORT
+ 
+mosquôto_wûl_£t
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+t›ic
+, 
+∑ylﬂdÀn
+, c⁄° *
+∑ylﬂd
+, 
+qos
+, 
+boﬁ
+ 
+ªèö
+);
+
+303 
+libmosq_EXPORT
+ 
+mosquôto_wûl_˛ór
+(
+mosquôto
+ *
+mosq
+);
+
+328 
+libmosq_EXPORT
+ 
+mosquôto_u£∫ame_pw_£t
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+u£∫ame
+, c⁄° *
+∑ssw‹d
+);
+
+354 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+p‹t
+, 
+kì∑live
+);
+
+384 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘_böd
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+p‹t
+, 
+kì∑live
+, c⁄° *
+böd_addªss
+);
+
+415 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘_async
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+p‹t
+, 
+kì∑live
+);
+
+452 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘_böd_async
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+p‹t
+, 
+kì∑live
+, c⁄° *
+böd_addªss
+);
+
+488 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘_§v
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+kì∑live
+, c⁄° *
+böd_addªss
+);
+
+519 
+libmosq_EXPORT
+ 
+mosquôto_ªc⁄√˘
+(
+mosquôto
+ *
+mosq
+);
+
+550 
+libmosq_EXPORT
+ 
+mosquôto_ªc⁄√˘_async
+(
+mosquôto
+ *
+mosq
+);
+
+565 
+libmosq_EXPORT
+ 
+mosquôto_disc⁄√˘
+(
+mosquôto
+ *
+mosq
+);
+
+602 
+libmosq_EXPORT
+ 
+mosquôto_publish
+(
+mosquôto
+ *
+mosq
+, *
+mid
+, c⁄° *
+t›ic
+, 
+∑ylﬂdÀn
+, c⁄° *
+∑ylﬂd
+, 
+qos
+, 
+boﬁ
+ 
+ªèö
+);
+
+624 
+libmosq_EXPORT
+ 
+mosquôto_subs¸ibe
+(
+mosquôto
+ *
+mosq
+, *
+mid
+, c⁄° *
+sub
+, 
+qos
+);
+
+645 
+libmosq_EXPORT
+ 
+mosquôto_unsubs¸ibe
+(
+mosquôto
+ *
+mosq
+, *
+mid
+, c⁄° *
+sub
+);
+
+665 
+libmosq_EXPORT
+ 
+mosquôto_mesßge_c›y
+(
+mosquôto_mesßge
+ *
+d°
+, c⁄° mosquôto_mesßgê*
+§c
+);
+
+678 
+libmosq_EXPORT
+ 
+mosquôto_mesßge_‰ì
+(
+mosquôto_mesßge
+ **
+mesßge
+);
+
+724 
+libmosq_EXPORT
+ 
+mosquôto_lo›
+(
+mosquôto
+ *
+mosq
+, 
+timeout
+, 
+max_∑ckës
+);
+
+760 
+libmosq_EXPORT
+ 
+mosquôto_lo›_f‹evî
+(
+mosquôto
+ *
+mosq
+, 
+timeout
+, 
+max_∑ckës
+);
+
+780 
+libmosq_EXPORT
+ 
+mosquôto_lo›_°¨t
+(
+mosquôto
+ *
+mosq
+);
+
+804 
+libmosq_EXPORT
+ 
+mosquôto_lo›_°›
+(
+mosquôto
+ *
+mosq
+, 
+boﬁ
+ 
+f‹˚
+);
+
+818 
+libmosq_EXPORT
+ 
+mosquôto_sockë
+(
+mosquôto
+ *
+mosq
+);
+
+848 
+libmosq_EXPORT
+ 
+mosquôto_lo›_ªad
+(
+mosquôto
+ *
+mosq
+, 
+max_∑ckës
+);
+
+878 
+libmosq_EXPORT
+ 
+mosquôto_lo›_wrôe
+(
+mosquôto
+ *
+mosq
+, 
+max_∑ckës
+);
+
+901 
+libmosq_EXPORT
+ 
+mosquôto_lo›_misc
+(
+mosquôto
+ *
+mosq
+);
+
+914 
+libmosq_EXPORT
+ 
+boﬁ
+ 
+mosquôto_w™t_wrôe
+(
+mosquôto
+ *
+mosq
+);
+
+931 
+libmosq_EXPORT
+ 
+mosquôto_thªaded_£t
+(
+mosquôto
+ *
+mosq
+, 
+boﬁ
+ 
+thªaded
+);
+
+949 
+libmosq_EXPORT
+ 
+mosquôto_›ts_£t
+(
+mosquôto
+ *
+mosq
+, 
+mosq_›t_t
+ 
+›ti⁄
+, *
+vÆue
+);
+
+998 
+libmosq_EXPORT
+ 
+mosquôto_és_£t
+(
+mosquôto
+ *
+mosq
+,
+
+999 c⁄° *
+ˇfûe
+, c⁄° *
+ˇ∑th
+,
+
+1000 c⁄° *
+˚πfûe
+, c⁄° *
+keyfûe
+,
+
+1001 (*
+pw_ˇŒback
+)(*
+buf
+, 
+size
+, 
+rwÊag
+, *
+u£rd©a
+));
+
+1028 
+libmosq_EXPORT
+ 
+mosquôto_és_ö£cuª_£t
+(
+mosquôto
+ *
+mosq
+, 
+boﬁ
+ 
+vÆue
+);
+
+1062 
+libmosq_EXPORT
+ 
+mosquôto_és_›ts_£t
+(
+mosquôto
+ *
+mosq
+, 
+˚π_ªqs
+, c⁄° *
+és_vîsi⁄
+, c⁄° *
+cùhîs
+);
+
+1089 
+libmosq_EXPORT
+ 
+mosquôto_és_psk_£t
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+psk
+, c⁄° *
+idítôy
+, c⁄° *
+cùhîs
+);
+
+1113 
+libmosq_EXPORT
+ 
+mosquôto_c⁄√˘_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_c⁄√˘
+)(mosquitto *, *, ));
+
+1133 
+libmosq_EXPORT
+ 
+mosquôto_disc⁄√˘_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_disc⁄√˘
+)(mosquitto *, *, ));
+
+1151 
+libmosq_EXPORT
+ 
+mosquôto_publish_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_publish
+)(mosquitto *, *, ));
+
+1174 
+libmosq_EXPORT
+ 
+mosquôto_mesßge_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_mesßge
+)(mosquôtÿ*, *, c⁄° 
+mosquôto_mesßge
+ *));
+
+1195 
+libmosq_EXPORT
+ 
+mosquôto_subs¸ibe_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_subs¸ibe
+)(mosquitto *, *, , , const *));
+
+1213 
+libmosq_EXPORT
+ 
+mosquôto_unsubs¸ibe_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_unsubs¸ibe
+)(mosquitto *, *, ));
+
+1236 
+libmosq_EXPORT
+ 
+mosquôto_log_ˇŒback_£t
+(
+mosquôto
+ *
+mosq
+, (*
+⁄_log
+)(mosquitto *, *, , const *));
+
+1273 
+libmosq_EXPORT
+ 
+mosquôto_ªc⁄√˘_dñay_£t
+(
+mosquôto
+ *
+mosq
+, 
+ªc⁄√˘_dñay
+, 
+ªc⁄√˘_dñay_max
+, 
+boﬁ
+ 
+ªc⁄√˘_exp⁄ítül_backoff
+);
+
+1298 
+libmosq_EXPORT
+ 
+mosquôto_max_öÊight_mesßges_£t
+(
+mosquôto
+ *
+mosq
+, 
+max_öÊight_mesßges
+);
+
+1311 
+libmosq_EXPORT
+ 
+mosquôto_mesßge_ªåy_£t
+(
+mosquôto
+ *
+mosq
+, 
+mesßge_ªåy
+);
+
+1327 
+libmosq_EXPORT
+ 
+mosquôto_u£r_d©a_£t
+(
+mosquôto
+ *
+mosq
+, *
+obj
+);
+
+1351 
+libmosq_EXPORT
+ 
+mosquôto_socks5_£t
+(
+mosquôto
+ *
+mosq
+, c⁄° *
+ho°
+, 
+p‹t
+, c⁄° *
+u£∫ame
+, c⁄° *
+∑ssw‹d
+);
+
+1371 
+libmosq_EXPORT
+ c⁄° *
+mosquôto_°ªº‹
+(
+mosq_î∫o
+);
+
+1384 
+libmosq_EXPORT
+ c⁄° *
+mosquôto_c⁄«ck_°rög
+(
+c⁄«ck_code
+);
+
+1439 
+libmosq_EXPORT
+ 
+mosquôto_sub_t›ic_tokíi£
+(c⁄° *
+subt›ic
+, ***
+t›ics
+, *
+cou¡
+);
+
+1457 
+libmosq_EXPORT
+ 
+mosquôto_sub_t›ic_tokís_‰ì
+(***
+t›ics
+, 
+cou¡
+);
+
+1480 
+libmosq_EXPORT
+ 
+mosquôto_t›ic_m©ches_sub
+(c⁄° *
+sub
+, c⁄° *
+t›ic
+, 
+boﬁ
+ *
+ªsu…
+);
+
+1504 
+libmosq_EXPORT
+ 
+mosquôto_pub_t›ic_check
+(c⁄° *
+t›ic
+);
+
+1531 
+libmosq_EXPORT
+ 
+mosquôto_sub_t›ic_check
+(c⁄° *
+t›ic
+);
+
+1533 #ifde‡
+__˝lu•lus
+
+
+	@
+1
+.
+1
+/usr/include
+5
+63
+cm.h
+device_discovery.c
+main.c
+mqtt.c
+/usr/include/mosquitto.h

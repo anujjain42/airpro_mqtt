@@ -4,7 +4,6 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from broker.serializers import *
-from broker import mqtt_server
 # Create your views here.
 
 class DeviceViewSet(ModelViewSet):
@@ -22,6 +21,10 @@ class DeviceViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data =  request.data
+        devices = UnregisteredDevice.objects.filter(serial_number=data['serial_number'])
+        if (len(devices) and not devices[0].status): return Response({"messages":"Serial number already registred"},status=status.HTTP_306_RESERVED)
+        elif(len(devices)==0):return Response({"messages":"Serial number Not vaild"},status=status.HTTP_404_NOT_FOUND)    
+        
         obj = Device.objects.filter(**data) 
         broker_obj = BrokerDetail.objects.get(id=1)
         ser = BrokerDetailsSerializer(broker_obj).data
@@ -40,18 +43,18 @@ class DeviceViewSet(ModelViewSet):
 class WifiDeviceInfoViewSet(ModelViewSet):
     queryset = WifiDeviceInfo.objects.all()
     serializer_class = WifiDeviceInfoSerializer
-    http_method_names = ['get','post']
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get','post','patch']
+    # permission_classes = [IsAuthenticated]
 
 
 class NetworkDeviceInfoViewSet(ModelViewSet):
     queryset = NetworkDeviceInfo.objects.all()
     serializer_class = NetworkDeviceInfoSerializer
-    http_method_names = ['get','post']
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get','post','patch']
+    # permission_classes = [IsAuthenticated]
 
 class SystemDeviceInfoInfoViewSet(ModelViewSet):
     queryset = SystemDeviceInfo.objects.all()
     serializer_class = SystemDeviceInfoSerializer
-    http_method_names = ['get','post']
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get','post','patch']
+    # permission_classes = [IsAuthenticated]

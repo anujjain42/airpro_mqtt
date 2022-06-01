@@ -3,7 +3,8 @@ import json
 import time
 from .models import *
 
-broker = "122.170.105.253"
+# broker = "122.170.105.253"
+broker = "127.0.0.1"
 port = 1883
 
 #connecting
@@ -20,15 +21,19 @@ def on_connect(subs, obj, flags, rc):
     
 
 def on_message(subs, obj, msg):
-    f = open("demofile2.txt", "a")
     data = msg.payload.decode()    
     data = json.loads(data)
-    f.writelines(json.dumps(data, indent = 4))
-    f.writelines('\n')
-    f.close()
+    del data['uuid'] , data['macaddr'], data['serial_num']    
     print(msg.topic + " " + str(data))
+    if data['type'] == 1000:
+        SystemDeviceInfo.objects.create(**data)
+
+    elif data['type'] == 1001:
+        NetworkDeviceInfo.objects.create(**data)
+
+    elif data['type'] == 1002:
+        WifiDeviceInfo.objects.create(**data)
     
-    # WifiDeviceInfo.objects.create(**data)
     publisher = server_mqtt.Client("PUBLISHER")
     subs.connect(broker, port)
     # publisher.username_pw_set(username="airpro_mqtt_server",password="Y3VDWxsijgfuXdE")

@@ -2,11 +2,18 @@
 #define __AIRPRO_CM_H_
 
 #include <mosquitto.h>
+#include "tmp_conf.h"
 
 #define AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY 1
 #define AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT 2
 
 #define AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT 5
+
+enum airpro_cmd_type {
+    AIRPRO_DEV_CMD_TYPE_SYSTEM = 1,
+    AIRPRO_DEV_CMD_TYPE_NETWORK = 2,
+    AIRPRO_DEV_CMD_TYPE_WIFI = 3,
+};
 
 struct mosq_config {
     char *id;
@@ -39,6 +46,7 @@ struct device_info {
     unsigned char macaddr[6];
     char ip_addr[64];
     char serial_num[64];
+    int device_id;
 };
 
 struct airpro_broker {

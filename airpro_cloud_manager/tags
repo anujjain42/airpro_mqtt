@@ -4,61 +4,590 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-AIRPRO_CLOUD_MANAGER_SRC	Makefile	/^AIRPRO_CLOUD_MANAGER_SRC:= main.c device_discovery.c mqtt.c$/;"	m
-AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY	cm.h	6;"	d
-AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT	cm.h	7;"	d
-AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT	cm.h	9;"	d
+ACL_ACTION_DENY	airpro_mgr_msg.h	/^    ACL_ACTION_DENY   = 0,$/;"	e	enum:acl_action_type
+ACL_ACTION_PERMIT	airpro_mgr_msg.h	/^    ACL_ACTION_PERMIT = 1,$/;"	e	enum:acl_action_type
+ACL_RULE_IP	airpro_mgr_msg.h	/^    ACL_RULE_IP    = 1,$/;"	e	enum:acl_rule_type
+ACL_RULE_MAC	airpro_mgr_msg.h	/^    ACL_RULE_MAC   = 2,$/;"	e	enum:acl_rule_type
+ACL_RULE_NONE	airpro_mgr_msg.h	/^    ACL_RULE_NONE  = 0,$/;"	e	enum:acl_rule_type
+ACL_RULE_PROTO	airpro_mgr_msg.h	/^    ACL_RULE_PROTO = 3,$/;"	e	enum:acl_rule_type
+AIRPRO_BRIDGE_MODE_IP_TYPE_DHCP	airpro_mgr_msg.h	/^    AIRPRO_BRIDGE_MODE_IP_TYPE_DHCP = 2,$/;"	e	enum:bridge_mode_ip_type
+AIRPRO_BRIDGE_MODE_IP_TYPE_STATIC	airpro_mgr_msg.h	/^    AIRPRO_BRIDGE_MODE_IP_TYPE_STATIC = 1,$/;"	e	enum:bridge_mode_ip_type
+AIRPRO_BW_160MHZ	airpro_mgr_msg.h	/^    AIRPRO_BW_160MHZ = 160,$/;"	e	enum:airpro_bw_mapping
+AIRPRO_BW_20MHZ	airpro_mgr_msg.h	/^    AIRPRO_BW_20MHZ = 20,$/;"	e	enum:airpro_bw_mapping
+AIRPRO_BW_40MHZ	airpro_mgr_msg.h	/^    AIRPRO_BW_40MHZ = 40,$/;"	e	enum:airpro_bw_mapping
+AIRPRO_BW_80MHZ	airpro_mgr_msg.h	/^    AIRPRO_BW_80MHZ = 80,$/;"	e	enum:airpro_bw_mapping
+AIRPRO_BW_NONE	airpro_mgr_msg.h	/^    AIRPRO_BW_NONE = 0,$/;"	e	enum:airpro_bw_mapping
+AIRPRO_CLOUD_MANAGER_SRC	Makefile	/^AIRPRO_CLOUD_MANAGER_SRC:= main.c device_discovery.c mqtt.c msg_dev_json.c dummy_wifi_manager.c$/;"	m
+AIRPRO_CM_SM_STATE_DEVICE_DISCOVERY	cm.h	7;"	d
+AIRPRO_CM_SM_STATE_DEVICE_MANAGEMENT	cm.h	8;"	d
+AIRPRO_CM_SM_WAIT_TIME_SECS_DEFAULT	cm.h	10;"	d
+AIRPRO_DEV_CMD_TYPE_NETWORK	cm.h	/^    AIRPRO_DEV_CMD_TYPE_NETWORK = 2,$/;"	e	enum:airpro_cmd_type
+AIRPRO_DEV_CMD_TYPE_SYSTEM	cm.h	/^    AIRPRO_DEV_CMD_TYPE_SYSTEM = 1,$/;"	e	enum:airpro_cmd_type
+AIRPRO_DEV_CMD_TYPE_WIFI	cm.h	/^    AIRPRO_DEV_CMD_TYPE_WIFI = 3,$/;"	e	enum:airpro_cmd_type
+AIRPRO_DEV_MAC_IFACE	tmp_conf.h	2;"	d
+AIRPRO_DUMMY_DEVICE_ID	tmp_conf.h	9;"	d
+AIRPRO_DUMMY_IP_ADDR	tmp_conf.h	8;"	d
+AIRPRO_DUMMY_SERIAL_NUM	tmp_conf.h	7;"	d
+AIRPRO_MAX_STA	airpro_mgr_msg.h	9;"	d
+AIRPRO_MGR_MSG_HDR	airpro_mgr_msg.h	/^struct AIRPRO_MGR_MSG_HDR {$/;"	s
+AIRPRO_MQTT_BROKER_IP	tmp_conf.h	4;"	d
+AIRPRO_MQTT_BROKER_PORT	tmp_conf.h	5;"	d
+AIRPRO_NAT_MODE_IP_TYPE_DHCP	airpro_mgr_msg.h	/^    AIRPRO_NAT_MODE_IP_TYPE_DHCP = 2,$/;"	e	enum:nat_mode_ip_type
+AIRPRO_NAT_MODE_IP_TYPE_PPPOE	airpro_mgr_msg.h	/^    AIRPRO_NAT_MODE_IP_TYPE_PPPOE = 3,$/;"	e	enum:nat_mode_ip_type
+AIRPRO_NAT_MODE_IP_TYPE_STATIC	airpro_mgr_msg.h	/^    AIRPRO_NAT_MODE_IP_TYPE_STATIC = 1,$/;"	e	enum:nat_mode_ip_type
+AIRPRO_NETWORK_DATA_TYPE_CMD_ADD_DHCP_LEASE	airpro_mgr_msg.h	492;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_ADD_STATIC_LEASE	airpro_mgr_msg.h	501;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_ADD_STATIC_ROUTE	airpro_mgr_msg.h	495;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_ADD_VLAN	airpro_mgr_msg.h	498;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_DEL_DHCP_LEASE	airpro_mgr_msg.h	493;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_DEL_STATIC_LEASE	airpro_mgr_msg.h	502;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_DEL_STATIC_ROUTE	airpro_mgr_msg.h	496;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_DEL_VLAN	airpro_mgr_msg.h	499;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_ACTIVE_NETWORK_CONFIG	airpro_mgr_msg.h	505;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_ALL_DHCP_LEASE	airpro_mgr_msg.h	494;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_ALL_STATIC_LEASE	airpro_mgr_msg.h	503;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_ALL_STATIC_ROUTE	airpro_mgr_msg.h	497;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_ALL_VLAN	airpro_mgr_msg.h	500;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_BRIDGE_MODE_CONFIG	airpro_mgr_msg.h	489;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_NAT_MODE_CONFIG	airpro_mgr_msg.h	488;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_GET_NETWORK_MODE	airpro_mgr_msg.h	491;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_NETWORK_COMMIT	airpro_mgr_msg.h	504;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_SET_BRIDGE_MODE	airpro_mgr_msg.h	487;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_SET_NAT_MODE	airpro_mgr_msg.h	486;"	d
+AIRPRO_NETWORK_DATA_TYPE_CMD_SET_NETWORK_MODE	airpro_mgr_msg.h	490;"	d
+AIRPRO_NETWORK_EVENT_ADD_DHCP_LEASE	airpro_mgr_msg.h	514;"	d
+AIRPRO_NETWORK_EVENT_ADD_STATIC_LEASE	airpro_mgr_msg.h	523;"	d
+AIRPRO_NETWORK_EVENT_ADD_STATIC_ROUTE	airpro_mgr_msg.h	517;"	d
+AIRPRO_NETWORK_EVENT_ADD_VLAN	airpro_mgr_msg.h	520;"	d
+AIRPRO_NETWORK_EVENT_DEL_DHCP_LEASE	airpro_mgr_msg.h	515;"	d
+AIRPRO_NETWORK_EVENT_DEL_STATIC_LEASE	airpro_mgr_msg.h	524;"	d
+AIRPRO_NETWORK_EVENT_DEL_STATIC_ROUTE	airpro_mgr_msg.h	518;"	d
+AIRPRO_NETWORK_EVENT_DEL_VLAN	airpro_mgr_msg.h	521;"	d
+AIRPRO_NETWORK_EVENT_GET_ACTIVE_NETWORK_CONFIG	airpro_mgr_msg.h	527;"	d
+AIRPRO_NETWORK_EVENT_GET_ALL_DHCP_LEASE	airpro_mgr_msg.h	516;"	d
+AIRPRO_NETWORK_EVENT_GET_ALL_STATIC_LEASE	airpro_mgr_msg.h	525;"	d
+AIRPRO_NETWORK_EVENT_GET_ALL_STATIC_ROUTE	airpro_mgr_msg.h	519;"	d
+AIRPRO_NETWORK_EVENT_GET_ALL_VLAN	airpro_mgr_msg.h	522;"	d
+AIRPRO_NETWORK_EVENT_GET_BRIDGE_MODE_CONFIG	airpro_mgr_msg.h	511;"	d
+AIRPRO_NETWORK_EVENT_GET_NAT_MODE_CONFIG	airpro_mgr_msg.h	510;"	d
+AIRPRO_NETWORK_EVENT_GET_NETWORK_MODE	airpro_mgr_msg.h	513;"	d
+AIRPRO_NETWORK_EVENT_NETWORK_COMMIT	airpro_mgr_msg.h	526;"	d
+AIRPRO_NETWORK_EVENT_SET_BRIDGE_MODE	airpro_mgr_msg.h	509;"	d
+AIRPRO_NETWORK_EVENT_SET_NAT_MODE	airpro_mgr_msg.h	508;"	d
+AIRPRO_NETWORK_EVENT_SET_NETWORK_MODE	airpro_mgr_msg.h	512;"	d
+AIRPRO_NETWORK_MODE_BRIDGE	airpro_mgr_msg.h	/^    AIRPRO_NETWORK_MODE_BRIDGE = 2,$/;"	e	enum:airpro_net_mode
+AIRPRO_NETWORK_MODE_NAT	airpro_mgr_msg.h	/^    AIRPRO_NETWORK_MODE_NAT = 1,$/;"	e	enum:airpro_net_mode
+AIRPRO_RADIO_24	airpro_mgr_msg.h	/^    AIRPRO_RADIO_24 = 0,$/;"	e	enum:airpro_radio_mapping
+AIRPRO_RADIO_5	airpro_mgr_msg.h	/^    AIRPRO_RADIO_5 = 1,$/;"	e	enum:airpro_radio_mapping
+AIRPRO_RADIO_6	airpro_mgr_msg.h	/^    AIRPRO_RADIO_6 = 2,$/;"	e	enum:airpro_radio_mapping
+AIRPRO_SET_COMPONENT_TYPE_NETWORK_INFO	airpro_mgr_msg.h	483;"	d
+AIRPRO_SET_COMPONENT_TYPE_SYSTEM_INFO	airpro_mgr_msg.h	482;"	d
+AIRPRO_SET_COMPONENT_TYPE_WIFI_MGR	airpro_mgr_msg.h	481;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_GET_BRD_FW_INFO	airpro_mgr_msg.h	532;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_GET_SPEEDTEST_RESULT	airpro_mgr_msg.h	531;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_GET_SYSTEM_MODE	airpro_mgr_msg.h	534;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_GET_SYSTEM_STATS	airpro_mgr_msg.h	530;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_SET_SPEEDTEST_INTERVAL	airpro_mgr_msg.h	535;"	d
+AIRPRO_SYSTEM_DATA_TYPE_CMD_SET_SYSTEM_MODE	airpro_mgr_msg.h	533;"	d
+AIRPRO_SYSTEM_EVENT_GET_BRD_FW_INFO	airpro_mgr_msg.h	540;"	d
+AIRPRO_SYSTEM_EVENT_GET_SPEEDTEST_RESULT	airpro_mgr_msg.h	539;"	d
+AIRPRO_SYSTEM_EVENT_GET_SYSTEM_MODE	airpro_mgr_msg.h	542;"	d
+AIRPRO_SYSTEM_EVENT_GET_SYSTEM_STATS	airpro_mgr_msg.h	538;"	d
+AIRPRO_SYSTEM_EVENT_SET_SPEEDTEST_INTERVAL	airpro_mgr_msg.h	543;"	d
+AIRPRO_SYSTEM_EVENT_SET_SYSTEM_MODE	airpro_mgr_msg.h	541;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_ADD_ACLRULE	airpro_mgr_msg.h	563;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_ADD_RATE_LIMIT	airpro_mgr_msg.h	565;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_ADD_TO_BLACKLIST	airpro_mgr_msg.h	559;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_ADD_TO_WHITELIST	airpro_mgr_msg.h	561;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_DEL_ACLRULE	airpro_mgr_msg.h	564;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_DEL_FROM_BLACKLIST	airpro_mgr_msg.h	560;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_DEL_FROM_WHITELIST	airpro_mgr_msg.h	562;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_DEL_RATE_LIMIT	airpro_mgr_msg.h	566;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_FLUSH_BLACKLIST	airpro_mgr_msg.h	567;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_FLUSH_WHITELIST	airpro_mgr_msg.h	568;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_ALL_ASSOC_STA_SUMMARY	airpro_mgr_msg.h	554;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_ALL_CLIENT_COUNT	airpro_mgr_msg.h	569;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_ALL_CLIENT_RSSI	airpro_mgr_msg.h	570;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_AP_STATS	airpro_mgr_msg.h	555;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_ASSOC_STA_SUMMARY	airpro_mgr_msg.h	557;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_BLACKLIST_CLIENTS	airpro_mgr_msg.h	572;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_CHANNEL_SCAN_RESULTS	airpro_mgr_msg.h	556;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_CLIENT_RATE_LIMIT	airpro_mgr_msg.h	571;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_RADIO_STATS	airpro_mgr_msg.h	546;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_STA_STATS	airpro_mgr_msg.h	558;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_SUPPORTED_RADIO_MODES	airpro_mgr_msg.h	574;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_GET_WHITELIST_CLIENTS	airpro_mgr_msg.h	573;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_ADD_WIRELESS_VAP	airpro_mgr_msg.h	551;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_DEL_WIRELESS_VAP	airpro_mgr_msg.h	552;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_GET_WIRELESS_RADIO	airpro_mgr_msg.h	548;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_GET_WIRELESS_VAP	airpro_mgr_msg.h	550;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_RESET_WIRELESS_RADIO	airpro_mgr_msg.h	553;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_SET_WIRELESS_RADIO	airpro_mgr_msg.h	547;"	d
+AIRPRO_WIFI_MGR_DATA_TYPE_CMD_UCI_SET_WIRELESS_VAP	airpro_mgr_msg.h	549;"	d
+AIRPRO_WIFI_MGR_EVENT_ADD_ACLRULE	airpro_mgr_msg.h	594;"	d
+AIRPRO_WIFI_MGR_EVENT_ADD_RATE_LIMIT	airpro_mgr_msg.h	596;"	d
+AIRPRO_WIFI_MGR_EVENT_ADD_TO_BLACKLIST	airpro_mgr_msg.h	590;"	d
+AIRPRO_WIFI_MGR_EVENT_ADD_TO_WHITELIST	airpro_mgr_msg.h	592;"	d
+AIRPRO_WIFI_MGR_EVENT_DEL_ACLRULE	airpro_mgr_msg.h	595;"	d
+AIRPRO_WIFI_MGR_EVENT_DEL_FROM_BLACKLIST	airpro_mgr_msg.h	591;"	d
+AIRPRO_WIFI_MGR_EVENT_DEL_FROM_WHITELIST	airpro_mgr_msg.h	593;"	d
+AIRPRO_WIFI_MGR_EVENT_DEL_RATE_LIMIT	airpro_mgr_msg.h	597;"	d
+AIRPRO_WIFI_MGR_EVENT_FLUSH_BLACKLIST	airpro_mgr_msg.h	598;"	d
+AIRPRO_WIFI_MGR_EVENT_FLUSH_WHITELIST	airpro_mgr_msg.h	599;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_ALL_ASSOC_STA_SUMMARY	airpro_mgr_msg.h	585;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_ALL_CLIENT_COUNT	airpro_mgr_msg.h	600;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_ALL_CLIENT_RSSI	airpro_mgr_msg.h	601;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_AP_STATS	airpro_mgr_msg.h	586;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_ASSOC_STA_SUMMARY	airpro_mgr_msg.h	588;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_BLACKLIST_CLIENTS	airpro_mgr_msg.h	603;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_CHANNEL_SCAN_RESULTS	airpro_mgr_msg.h	587;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_CLIENT_RATE_LIMIT	airpro_mgr_msg.h	602;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_RADIO_STATS	airpro_mgr_msg.h	577;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_STA_STATS	airpro_mgr_msg.h	589;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_SUPPORTED_RADIO_MODES	airpro_mgr_msg.h	605;"	d
+AIRPRO_WIFI_MGR_EVENT_GET_WHITELIST_CLIENTS	airpro_mgr_msg.h	604;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_ADD_WIRELESS_VAP	airpro_mgr_msg.h	582;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_DEL_WIRELESS_VAP	airpro_mgr_msg.h	583;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_GET_WIRELESS_RADIO	airpro_mgr_msg.h	579;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_GET_WIRELESS_VAP	airpro_mgr_msg.h	581;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_RESET_WIRELESS_RADIO	airpro_mgr_msg.h	584;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_SET_WIRELESS_RADIO	airpro_mgr_msg.h	578;"	d
+AIRPRO_WIFI_MGR_EVENT_UCI_SET_WIRELESS_VAP	airpro_mgr_msg.h	580;"	d
+API_STATUS_FAILURE	airpro_mgr_msg.h	/^    API_STATUS_FAILURE,$/;"	e	enum:api_status
+API_STATUS_SUCCESS	airpro_mgr_msg.h	/^    API_STATUS_SUCCESS = 0,$/;"	e	enum:api_status
 CC	Makefile	/^CC= gcc$/;"	m
+COMPONENT_TYPE	airpro_mgr_msg.h	/^enum COMPONENT_TYPE {$/;"	g
+COMPONENT_TYPE_NETWORK_INFO	airpro_mgr_msg.h	/^    COMPONENT_TYPE_NETWORK_INFO = 3,$/;"	e	enum:COMPONENT_TYPE
+COMPONENT_TYPE_SYSTEM_INFO	airpro_mgr_msg.h	/^    COMPONENT_TYPE_SYSTEM_INFO = 2,$/;"	e	enum:COMPONENT_TYPE
+COMPONENT_TYPE_WIFI_MANAGER	airpro_mgr_msg.h	/^    COMPONENT_TYPE_WIFI_MANAGER = 1,$/;"	e	enum:COMPONENT_TYPE
+JSON_TYPE_BOOL	msg_dev_json.c	/^    JSON_TYPE_BOOL,$/;"	e	enum:__anon1	file:
+JSON_TYPE_DOUBLE	msg_dev_json.c	/^    JSON_TYPE_DOUBLE,$/;"	e	enum:__anon1	file:
+JSON_TYPE_INT	msg_dev_json.c	/^    JSON_TYPE_INT,$/;"	e	enum:__anon1	file:
+JSON_TYPE_INT16	msg_dev_json.c	/^    JSON_TYPE_INT16,$/;"	e	enum:__anon1	file:
+JSON_TYPE_INT32	msg_dev_json.c	/^    JSON_TYPE_INT32,$/;"	e	enum:__anon1	file:
+JSON_TYPE_INT64	msg_dev_json.c	/^    JSON_TYPE_INT64,$/;"	e	enum:__anon1	file:
+JSON_TYPE_INT8	msg_dev_json.c	/^    JSON_TYPE_INT8,$/;"	e	enum:__anon1	file:
+JSON_TYPE_NULL	msg_dev_json.c	/^    JSON_TYPE_NULL = 0,$/;"	e	enum:__anon1	file:
+JSON_TYPE_STRING	msg_dev_json.c	/^    JSON_TYPE_STRING,$/;"	e	enum:__anon1	file:
+JSON_TYPE_UINT	msg_dev_json.c	/^    JSON_TYPE_UINT,$/;"	e	enum:__anon1	file:
+JSON_TYPE_UINT16	msg_dev_json.c	/^    JSON_TYPE_UINT16,$/;"	e	enum:__anon1	file:
+JSON_TYPE_UINT32	msg_dev_json.c	/^    JSON_TYPE_UINT32,$/;"	e	enum:__anon1	file:
+JSON_TYPE_UINT64	msg_dev_json.c	/^    JSON_TYPE_UINT64,$/;"	e	enum:__anon1	file:
+JSON_TYPE_UINT8	msg_dev_json.c	/^    JSON_TYPE_UINT8,$/;"	e	enum:__anon1	file:
+MAX_DHCP_ENTRY	airpro_mgr_msg.h	15;"	d
+MAX_DNS_LENGTH	airpro_mgr_msg.h	12;"	d
+MAX_MAC_ADDR_LEN	airpro_mgr_msg.h	7;"	d
+MAX_NEIGHBOUR_COUNT	airpro_mgr_msg.h	10;"	d
+MAX_NUM_DNS	airpro_mgr_msg.h	13;"	d
+MAX_NUM_RADIO	airpro_mgr_msg.h	14;"	d
+MAX_NWID_LEN	airpro_mgr_msg.h	8;"	d
+MAX_SCAN_CHAN	airpro_mgr_msg.h	11;"	d
+MAX_STATIC_LEASE_ENTRY	airpro_mgr_msg.h	18;"	d
+MAX_STATIC_ROUTE_ENTRY	airpro_mgr_msg.h	16;"	d
+MAX_SUPPORTED_MODES	airpro_mgr_msg.h	/^    MAX_SUPPORTED_MODES,$/;"	e	enum:supported_modes
+MAX_VLAN_ENTRY	airpro_mgr_msg.h	17;"	d
+MODE_11A	airpro_mgr_msg.h	/^    MODE_11A = 1,$/;"	e	enum:supported_modes
+MODE_11AC	airpro_mgr_msg.h	/^    MODE_11AC = 7,$/;"	e	enum:supported_modes
+MODE_11AX	airpro_mgr_msg.h	/^    MODE_11AX = 8,$/;"	e	enum:supported_modes
+MODE_11B	airpro_mgr_msg.h	/^    MODE_11B = 2,$/;"	e	enum:supported_modes
+MODE_11BGN	airpro_mgr_msg.h	/^    MODE_11BGN = 6,$/;"	e	enum:supported_modes
+MODE_11BGN_11AX	airpro_mgr_msg.h	/^    MODE_11BGN_11AX = 10,$/;"	e	enum:supported_modes
+MODE_11G	airpro_mgr_msg.h	/^    MODE_11G = 3,$/;"	e	enum:supported_modes
+MODE_11N	airpro_mgr_msg.h	/^    MODE_11N = 4,$/;"	e	enum:supported_modes
+MODE_11NA	airpro_mgr_msg.h	/^    MODE_11NA = 5,$/;"	e	enum:supported_modes
+MODE_11NA_11AC_11AX	airpro_mgr_msg.h	/^    MODE_11NA_11AC_11AX = 9,$/;"	e	enum:supported_modes
 __AIRPRO_CM_H_	cm.h	2;"	d
+__AIRPRO_MGR_MSG_H__	airpro_mgr_msg.h	2;"	d
+acct_port	airpro_mgr_msg.h	/^    int acct_port;$/;"	m	struct:airpro_mgr_wlan_vap_params
+acct_port	airpro_mgr_msg.h	/^    int acct_port;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+acl_action_type	airpro_mgr_msg.h	/^enum acl_action_type {$/;"	g
+acl_rule_type	airpro_mgr_msg.h	/^enum acl_rule_type {$/;"	g
+action	airpro_mgr_msg.h	/^    enum acl_action_type action;$/;"	m	struct:airpro_acl_config	typeref:enum:airpro_acl_config::acl_action_type
+airpro_acl_config	airpro_mgr_msg.h	/^struct airpro_acl_config {$/;"	s
+airpro_acl_ipaddr	airpro_mgr_msg.h	/^struct airpro_acl_ipaddr {$/;"	s
+airpro_acl_macaddr	airpro_mgr_msg.h	/^struct airpro_acl_macaddr {$/;"	s
+airpro_acl_param	airpro_mgr_msg.h	/^    union airpro_acl_param {$/;"	u	struct:airpro_acl_config
+airpro_active_network_config	airpro_mgr_msg.h	/^struct airpro_active_network_config {$/;"	s
+airpro_bridge_mode_config	airpro_mgr_msg.h	/^struct airpro_bridge_mode_config {$/;"	s
 airpro_broker	cm.h	/^struct airpro_broker {$/;"	s
+airpro_bw_mapping	airpro_mgr_msg.h	/^enum airpro_bw_mapping {$/;"	g
+airpro_chan_scan_results	airpro_mgr_msg.h	/^struct airpro_chan_scan_results {$/;"	s
 airpro_cm_handle	cm.h	/^struct airpro_cm_handle {$/;"	s
+airpro_cmd_get_active_network_config	dummy_wifi_manager.c	/^void airpro_cmd_get_active_network_config(char *reply, int reply_buf_len)$/;"	f
+airpro_cmd_get_brd_fw_info	dummy_wifi_manager.c	/^void airpro_cmd_get_brd_fw_info(char *reply, int reply_buf_len)$/;"	f
+airpro_cmd_get_system_stats	dummy_wifi_manager.c	/^void airpro_cmd_get_system_stats(char *reply, int reply_buf_len)$/;"	f
+airpro_cmd_get_wifi_chan_scan_res	dummy_wifi_manager.c	/^void airpro_cmd_get_wifi_chan_scan_res(char *reply, int reply_buf_len)$/;"	f
+airpro_cmd_type	cm.h	/^enum airpro_cmd_type {$/;"	g
 airpro_connect_callback	mqtt.c	/^void airpro_connect_callback(struct mosquitto *mosq, void *obj, int rc)$/;"	f
+airpro_coplane	airpro_mgr_msg.h	/^struct airpro_coplane {$/;"	s
+airpro_del_dhcp_lease	airpro_mgr_msg.h	/^struct airpro_del_dhcp_lease {$/;"	s
+airpro_del_static_lease_entry	airpro_mgr_msg.h	/^struct airpro_del_static_lease_entry {$/;"	s
+airpro_del_static_route	airpro_mgr_msg.h	/^struct airpro_del_static_route {$/;"	s
+airpro_del_vlan_entry	airpro_mgr_msg.h	/^struct airpro_del_vlan_entry {$/;"	s
+airpro_dhcp_lease_entry	airpro_mgr_msg.h	/^struct airpro_dhcp_lease_entry {$/;"	s
+airpro_disconnect_callback	mqtt.c	/^void airpro_disconnect_callback(struct mosquitto *mosq, void *obj, int rc)$/;"	f
 airpro_do_mqtt_init	mqtt.c	/^int airpro_do_mqtt_init(struct airpro_cm_handle *cm)$/;"	f
 airpro_fetch_broker_details	main.c	/^void airpro_fetch_broker_details(struct airpro_cm_handle *cm)$/;"	f
+airpro_fetch_device_info	main.c	/^int airpro_fetch_device_info(struct airpro_cm_handle *cm)$/;"	f
+airpro_fetch_device_info_type	msg_dev_json.c	/^int airpro_fetch_device_info_type(struct airpro_cm_handle *cm, enum airpro_cmd_type cmd_type, char *data_buf, int *len)$/;"	f
+airpro_fetch_network_info	msg_dev_json.c	/^int airpro_fetch_network_info(struct airpro_cm_handle *cm, char *data_buf, int *len)$/;"	f
+airpro_fetch_serial_num	main.c	/^void airpro_fetch_serial_num(struct airpro_cm_handle *cm)$/;"	f
+airpro_fetch_system_info	msg_dev_json.c	/^int airpro_fetch_system_info(struct airpro_cm_handle *cm, char *data_buf, int *len)$/;"	f
+airpro_fetch_wifi_info	msg_dev_json.c	/^int airpro_fetch_wifi_info(struct airpro_cm_handle *cm, char *data_buf, int *len)$/;"	f
+airpro_get_active_network_config	msg_dev_json.c	/^void airpro_get_active_network_config(json_object *jobj)$/;"	f
+airpro_get_all_dhcp_lease_entry	airpro_mgr_msg.h	/^struct airpro_get_all_dhcp_lease_entry {$/;"	s
+airpro_get_all_static_lease	dummy_wifi_manager.c	/^void airpro_get_all_static_lease(char *reply, int reply_buf_len)$/;"	f
+airpro_get_all_static_lease_entry	airpro_mgr_msg.h	/^struct airpro_get_all_static_lease_entry {$/;"	s
+airpro_get_all_static_route_entry	airpro_mgr_msg.h	/^struct airpro_get_all_static_route_entry {$/;"	s
+airpro_get_all_vlan	dummy_wifi_manager.c	/^void airpro_get_all_vlan(char *reply, int reply_buf_len)$/;"	f
+airpro_get_all_vlan_entry	airpro_mgr_msg.h	/^struct airpro_get_all_vlan_entry {$/;"	s
+airpro_get_brd_fw_version	msg_dev_json.c	/^void airpro_get_brd_fw_version(json_object *jobj)$/;"	f
+airpro_get_config_network_mode	dummy_wifi_manager.c	/^void airpro_get_config_network_mode(char *reply, int reply_buf_len)$/;"	f
+airpro_get_nat_config	msg_dev_json.c	/^void airpro_get_nat_config(json_object *jobj)$/;"	f
+airpro_get_nat_mode_config	dummy_wifi_manager.c	/^void airpro_get_nat_mode_config(char *reply, int reply_buf_len)$/;"	f
+airpro_get_network_mode	msg_dev_json.c	/^void airpro_get_network_mode(json_object *jobj)$/;"	f
+airpro_get_static_lease	msg_dev_json.c	/^void airpro_get_static_lease(json_object *jobj)$/;"	f
+airpro_get_system_stats	msg_dev_json.c	/^void airpro_get_system_stats(json_object *jobj)$/;"	f
+airpro_get_vlan_config	msg_dev_json.c	/^void airpro_get_vlan_config(json_object *jobj)$/;"	f
+airpro_get_wifi_chan_scan_res	msg_dev_json.c	/^void airpro_get_wifi_chan_scan_res(json_object *jobj)$/;"	f
+airpro_lib_mgr_parse_event_json	msg_dev_json.c	/^int airpro_lib_mgr_parse_event_json(json_object *jobj, char *data)$/;"	f
+airpro_lib_send_cmd_network_msg	dummy_wifi_manager.c	/^int airpro_lib_send_cmd_network_msg(struct airpro_mgr_data *msg, int len,$/;"	f
+airpro_lib_send_cmd_system_msg	dummy_wifi_manager.c	/^int airpro_lib_send_cmd_system_msg(struct airpro_mgr_data *msg, int len,$/;"	f
+airpro_lib_send_wifi_mgr_msg	dummy_wifi_manager.c	/^int airpro_lib_send_wifi_mgr_msg(struct airpro_mgr_data *msg, int len,$/;"	f
 airpro_message_callback	mqtt.c	/^void airpro_message_callback(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg)$/;"	f
+airpro_mgr_data	airpro_mgr_msg.h	/^struct airpro_mgr_data {$/;"	s
+airpro_mgr_iface_idx	airpro_mgr_msg.h	/^struct airpro_mgr_iface_idx {$/;"	s
+airpro_mgr_macaddr	airpro_mgr_msg.h	/^struct airpro_mgr_macaddr {$/;"	s
+airpro_mgr_parse_wifimgr_event_json	msg_dev_json.c	/^int airpro_mgr_parse_wifimgr_event_json(json_object *jobj, uint8_t comptype, struct airpro_mgr_data *msg)$/;"	f
+airpro_mgr_wlan_radio_params	airpro_mgr_msg.h	/^struct airpro_mgr_wlan_radio_params {$/;"	s
+airpro_mgr_wlan_vap_params	airpro_mgr_msg.h	/^struct airpro_mgr_wlan_vap_params {$/;"	s
+airpro_nat_mode_config	airpro_mgr_msg.h	/^struct airpro_nat_mode_config {$/;"	s
+airpro_neighbor_list	airpro_mgr_msg.h	/^struct airpro_neighbor_list {$/;"	s
+airpro_net_mode	airpro_mgr_msg.h	/^enum airpro_net_mode {$/;"	g
+airpro_network_mode	airpro_mgr_msg.h	/^struct airpro_network_mode {$/;"	s
+airpro_parse_network_config_event_json	msg_dev_json.c	/^int airpro_parse_network_config_event_json(json_object *jobj, uint8_t comptype, struct airpro_mgr_data *msg)$/;"	f
+airpro_parse_system_config_event_json	msg_dev_json.c	/^int airpro_parse_system_config_event_json(json_object *jobj, uint8_t comptype, struct airpro_mgr_data *msg)$/;"	f
+airpro_prepare_get_active_network_config_buf	msg_dev_json.c	/^void *airpro_prepare_get_active_network_config_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
+airpro_prepare_get_all_static_lease_json_buf	msg_dev_json.c	/^void airpro_prepare_get_all_static_lease_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
+airpro_prepare_get_all_vlan_json_buf	msg_dev_json.c	/^void airpro_prepare_get_all_vlan_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype, struct airpro_get_all_vlan_entry *msg)$/;"	f
+airpro_prepare_get_channel_scan_results_json_buf	msg_dev_json.c	/^void airpro_prepare_get_channel_scan_results_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
+airpro_prepare_get_nat_mode_config_json_buf	msg_dev_json.c	/^void *airpro_prepare_get_nat_mode_config_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
+airpro_prepare_get_network_mode_json_buf	msg_dev_json.c	/^void *airpro_prepare_get_network_mode_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype, struct airpro_network_mode *msg)$/;"	f
+airpro_prepare_get_system_brd_fw_json_buf	msg_dev_json.c	/^void airpro_prepare_get_system_brd_fw_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
+airpro_prepare_get_system_stats_json_buf	msg_dev_json.c	/^void airpro_prepare_get_system_stats_json_buf(json_object *jobj, uint8_t comptype, uint16_t msgtype,$/;"	f
 airpro_publish_data	mqtt.c	/^int airpro_publish_data(struct airpro_cm_handle *cm, char *buf, int len)$/;"	f
+airpro_radio_mapping	airpro_mgr_msg.h	/^enum airpro_radio_mapping {$/;"	g
+airpro_rate_limit_config	airpro_mgr_msg.h	/^struct airpro_rate_limit_config {$/;"	s
 airpro_recv_data_handler	main.c	/^void airpro_recv_data_handler(struct airpro_cm_handle *cm, char *topic, char *payload, int payloadlen)$/;"	f
 airpro_recv_http_resp_cb	device_discovery.c	/^static size_t airpro_recv_http_resp_cb(void *data, size_t size, size_t nmemb, void *userp)$/;"	f	file:
 airpro_send_recv_device_discovery	device_discovery.c	/^int airpro_send_recv_device_discovery(struct airpro_cm_handle *cm)$/;"	f
 airpro_sm	cm.h	/^struct airpro_sm {$/;"	s
+airpro_speedtest_interval	airpro_mgr_msg.h	/^struct airpro_speedtest_interval {$/;"	s
+airpro_static_lease_entry	airpro_mgr_msg.h	/^struct airpro_static_lease_entry {$/;"	s
+airpro_static_route_entry	airpro_mgr_msg.h	/^struct airpro_static_route_entry {$/;"	s
 airpro_sub_handler	cm.h	/^    void (*airpro_sub_handler)(struct airpro_cm_handle *cm, char *topic, char *payload, int payloadlen);$/;"	m	struct:airpro_cm_handle
-airpro_sub_thread	test.c	/^void airpro_sub_thread(void *arg)$/;"	f
+airpro_system_event_type_brd_fw_info	airpro_mgr_msg.h	/^struct airpro_system_event_type_brd_fw_info {$/;"	s
+airpro_system_event_type_isp_info	airpro_mgr_msg.h	/^struct airpro_system_event_type_isp_info {$/;"	s
+airpro_system_event_type_stats	airpro_mgr_msg.h	/^struct airpro_system_event_type_stats {$/;"	s
+airpro_system_mode	airpro_mgr_msg.h	/^struct airpro_system_mode {$/;"	s
 airpro_validate_http_resp	device_discovery.c	/^int airpro_validate_http_resp(char *http_msg, int http_msg_len)$/;"	f
+airpro_vlan_entry	airpro_mgr_msg.h	/^struct airpro_vlan_entry {$/;"	s
+airpro_wifi_cp_data	airpro_mgr_msg.h	/^struct airpro_wifi_cp_data {$/;"	s
+airpro_wifimgr_assoc_sta_summary	airpro_mgr_msg.h	/^struct airpro_wifimgr_assoc_sta_summary {$/;"	s
+airpro_wifimgr_event_get_all_assoc_sta_summary	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_get_all_assoc_sta_summary {$/;"	s
+airpro_wifimgr_event_get_assoc_sta_summary	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_get_assoc_sta_summary {$/;"	s
+airpro_wifimgr_event_type_get_all_client_count	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_all_client_count {$/;"	s
+airpro_wifimgr_event_type_get_all_client_rssi	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_all_client_rssi {$/;"	s
+airpro_wifimgr_event_type_get_ap_stats	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_ap_stats {$/;"	s
+airpro_wifimgr_event_type_get_blacklist_clients	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_blacklist_clients {$/;"	s
+airpro_wifimgr_event_type_get_chan_scan_results	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_chan_scan_results {$/;"	s
+airpro_wifimgr_event_type_get_client_rate_limit	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_client_rate_limit {$/;"	s
+airpro_wifimgr_event_type_get_radio_stats	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_radio_stats {$/;"	s
+airpro_wifimgr_event_type_get_sta_stats	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_sta_stats {$/;"	s
+airpro_wifimgr_event_type_get_supported_modes	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_supported_modes {$/;"	s
+airpro_wifimgr_event_type_get_whitelist_clients	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_get_whitelist_clients {$/;"	s
+airpro_wifimgr_event_type_int	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_type_int {$/;"	s
+airpro_wifimgr_event_wlan_radio_params	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_wlan_radio_params {$/;"	s
+airpro_wifimgr_event_wlan_vap_params	airpro_mgr_msg.h	/^struct airpro_wifimgr_event_wlan_vap_params {$/;"	s
+api_status	airpro_mgr_msg.h	/^enum api_status {$/;"	g
+app_json_free	msg_dev_json.c	/^static void app_json_free(void *jsonbuf)$/;"	f	file:
+app_json_stringify	msg_dev_json.c	/^static const char *app_json_stringify(void *jsonbuf)$/;"	f	file:
+auth_port	airpro_mgr_msg.h	/^    int auth_port;$/;"	m	struct:airpro_mgr_wlan_vap_params
+auth_port	airpro_mgr_msg.h	/^    int auth_port;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
 bind_address	cm.h	/^    char *bind_address;$/;"	m	struct:mosq_config
+board_info	airpro_mgr_msg.h	/^    char board_info[256];$/;"	m	struct:airpro_system_event_type_brd_fw_info
+bridge_mode_dhcp_params	airpro_mgr_msg.h	/^struct bridge_mode_dhcp_params {$/;"	s
+bridge_mode_ip_type	airpro_mgr_msg.h	/^enum bridge_mode_ip_type {$/;"	g
+bridge_mode_static_params	airpro_mgr_msg.h	/^struct bridge_mode_static_params {$/;"	s
 broker	cm.h	/^    struct airpro_broker broker;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::airpro_broker
+bssid	airpro_mgr_msg.h	/^    uint8_t            bssid[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+bssid	airpro_mgr_msg.h	/^    uint8_t     bssid[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+bssid	airpro_mgr_msg.h	/^    uint8_t    bssid[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_neighbor_list
+bw	airpro_mgr_msg.h	/^    uint8_t            bw;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+bw	airpro_mgr_msg.h	/^    uint8_t     bw;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
 cfg	cm.h	/^    struct mosq_config cfg;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::mosq_config
+chan	airpro_mgr_msg.h	/^    uint8_t         chan;$/;"	m	struct:airpro_chan_scan_results
+chan	airpro_mgr_msg.h	/^    uint8_t     chan;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+chan_load	airpro_mgr_msg.h	/^    uint8_t         chan_load;$/;"	m	struct:airpro_chan_scan_results
+channel	airpro_mgr_msg.h	/^    int channel;$/;"	m	struct:airpro_mgr_wlan_radio_params
+channel	airpro_mgr_msg.h	/^    int channel;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+channel	airpro_mgr_msg.h	/^    uint8_t            channel;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+channel	airpro_mgr_msg.h	/^    uint8_t     channel;$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+client_mac	airpro_mgr_msg.h	/^    char client_mac[64];$/;"	m	struct:airpro_static_lease_entry
+client_name	airpro_mgr_msg.h	/^    char client_name[32];$/;"	m	struct:airpro_static_lease_entry
 cm	main.c	/^struct airpro_cm_handle cm;$/;"	v	typeref:struct:airpro_cm_handle
+component_type	airpro_mgr_msg.h	/^    char component_type;$/;"	m	struct:AIRPRO_MGR_MSG_HDR
+cond	airpro_mgr_msg.h	/^    pthread_cond_t cond;$/;"	m	struct:airpro_wifi_cp_data
 cond	cm.h	/^    pthread_cond_t cond;$/;"	m	struct:airpro_sm
+cookie	airpro_mgr_msg.h	/^    int cookie;$/;"	m	struct:AIRPRO_MGR_MSG_HDR
+coplane_thread_id	airpro_mgr_msg.h	/^    pthread_t coplane_thread_id;$/;"	m	struct:airpro_wifi_cp_data
+country	airpro_mgr_msg.h	/^    int country;$/;"	m	struct:airpro_mgr_wlan_radio_params
+country	airpro_mgr_msg.h	/^    int country;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+cpd	airpro_mgr_msg.h	/^    struct airpro_wifi_cp_data cpd;$/;"	m	struct:airpro_coplane	typeref:struct:airpro_coplane::airpro_wifi_cp_data
+cpu_usage	airpro_mgr_msg.h	/^    int cpu_usage;$/;"	m	struct:airpro_system_event_type_stats
+cu	airpro_mgr_msg.h	/^    int8_t      cu;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+cu_wifi	airpro_mgr_msg.h	/^    int8_t      cu_wifi;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+cu_wifi_obss	airpro_mgr_msg.h	/^    int8_t      cu_wifi_obss;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+cu_wifi_self	airpro_mgr_msg.h	/^    int8_t      cu_wifi_self;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+data	airpro_mgr_msg.h	/^    char data[0]; \/\/COMPONENT specific data$/;"	m	struct:airpro_mgr_data
+def_gw	airpro_mgr_msg.h	/^    char def_gw[64]; $/;"	m	struct:bridge_mode_static_params
+def_gw	airpro_mgr_msg.h	/^    char def_gw[64];$/;"	m	struct:airpro_dhcp_lease_entry
+def_gw	airpro_mgr_msg.h	/^    char def_gw[64];$/;"	m	struct:bridge_mode_dhcp_params
+def_gw	airpro_mgr_msg.h	/^    char def_gw[64];$/;"	m	struct:nat_mode_dhcp_params
+def_gw	airpro_mgr_msg.h	/^    char def_gw[64];$/;"	m	struct:nat_mode_static_params
 dev	cm.h	/^    struct device_info dev;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::device_info
+device_id	cm.h	/^    int device_id;$/;"	m	struct:device_info
 device_info	cm.h	/^struct device_info {$/;"	s
+device_type	airpro_mgr_msg.h	/^    uint8_t            device_type[64];$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+dhcp	airpro_mgr_msg.h	/^    struct airpro_dhcp_lease_entry dhcp[MAX_DHCP_ENTRY];$/;"	m	struct:airpro_get_all_dhcp_lease_entry	typeref:struct:airpro_get_all_dhcp_lease_entry::airpro_dhcp_lease_entry
+dhcp_mode_params	airpro_mgr_msg.h	/^        struct nat_mode_dhcp_params dhcp_mode_params;$/;"	m	union:airpro_nat_mode_config::nat_mode_params	typeref:struct:airpro_nat_mode_config::nat_mode_params::nat_mode_dhcp_params
+dhcp_mode_params	airpro_mgr_msg.h	/^    struct bridge_mode_dhcp_params dhcp_mode_params;$/;"	m	struct:airpro_bridge_mode_config	typeref:struct:airpro_bridge_mode_config::bridge_mode_dhcp_params
+disabled	airpro_mgr_msg.h	/^    int disabled;$/;"	m	struct:airpro_mgr_wlan_radio_params
+disabled	airpro_mgr_msg.h	/^    int disabled;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+dl_bytes_per_sec	airpro_mgr_msg.h	/^    uint32_t dl_bytes_per_sec;$/;"	m	struct:airpro_rate_limit_config
+dl_bytes_per_sec	airpro_mgr_msg.h	/^    uint32_t dl_bytes_per_sec;$/;"	m	struct:airpro_wifimgr_event_type_get_client_rate_limit
+dns	airpro_mgr_msg.h	/^    char dns[64]; $/;"	m	struct:bridge_mode_static_params
+dns	airpro_mgr_msg.h	/^    char dns[64];$/;"	m	struct:nat_mode_static_params
 do_exit	main.c	/^int do_exit;$/;"	v
+domain_name	airpro_mgr_msg.h	/^    uint8_t            domain_name[MAX_NUM_DNS][MAX_DNS_LENGTH];$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+domain_name_count	airpro_mgr_msg.h	/^    uint8_t            domain_name_count;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+encrypt_type	airpro_mgr_msg.h	/^    int encrypt_type;$/;"	m	struct:airpro_mgr_wlan_vap_params
+encrypt_type	airpro_mgr_msg.h	/^    int encrypt_type;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+end_addr	airpro_mgr_msg.h	/^    int end_addr;$/;"	m	struct:airpro_dhcp_lease_entry
 file_input	cm.h	/^    char *file_input; \/* pub *\/$/;"	m	struct:mosq_config
+fw_info	airpro_mgr_msg.h	/^    char fw_info[256];$/;"	m	struct:airpro_system_event_type_brd_fw_info
 hdd	cm.h	/^    struct http_device_discovery hdd;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::http_device_discovery
+hdr	airpro_mgr_msg.h	/^    struct AIRPRO_MGR_MSG_HDR hdr;$/;"	m	struct:airpro_mgr_data	typeref:struct:airpro_mgr_data::AIRPRO_MGR_MSG_HDR
+hide_ssid	airpro_mgr_msg.h	/^    int hide_ssid;$/;"	m	struct:airpro_mgr_wlan_vap_params
+hide_ssid	airpro_mgr_msg.h	/^    int hide_ssid;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
 host	cm.h	/^    char *host;$/;"	m	struct:mosq_config
+hostname	airpro_mgr_msg.h	/^    char        hostname[17];$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+htmode	airpro_mgr_msg.h	/^    char htmode[32];$/;"	m	struct:airpro_mgr_wlan_radio_params
+htmode	airpro_mgr_msg.h	/^    char htmode[32];$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
 http_device_discovery	cm.h	/^struct http_device_discovery {$/;"	s
 http_msg	cm.h	/^    char http_msg[1024];$/;"	m	struct:http_device_discovery
 http_msg_len	cm.h	/^    int http_msg_len;$/;"	m	struct:http_device_discovery
+hwmode	airpro_mgr_msg.h	/^    char hwmode[32];$/;"	m	struct:airpro_mgr_wlan_radio_params
+hwmode	airpro_mgr_msg.h	/^    char hwmode[32];$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
 id	cm.h	/^    char *id;$/;"	m	struct:mosq_config
 id_prefix	cm.h	/^    char *id_prefix;$/;"	m	struct:mosq_config
+iface	airpro_mgr_msg.h	/^    char iface[32];$/;"	m	struct:airpro_static_route_entry
+ifname	airpro_mgr_msg.h	/^    char ifname[10];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+interval	airpro_mgr_msg.h	/^    int interval;$/;"	m	struct:airpro_speedtest_interval
+ip	airpro_mgr_msg.h	/^    char        ip[20];$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+ip	airpro_mgr_msg.h	/^    char ip[64];$/;"	m	struct:airpro_acl_ipaddr
+ip_addr	airpro_mgr_msg.h	/^    char ip_addr[32];$/;"	m	struct:airpro_active_network_config
+ip_addr	airpro_mgr_msg.h	/^    char ip_addr[64];$/;"	m	struct:airpro_dhcp_lease_entry
+ip_addr	airpro_mgr_msg.h	/^    char ip_addr[64];$/;"	m	struct:airpro_vlan_entry
+ip_addr	airpro_mgr_msg.h	/^    char ip_addr[64];$/;"	m	struct:bridge_mode_static_params
+ip_addr	airpro_mgr_msg.h	/^    char ip_addr[64];$/;"	m	struct:nat_mode_static_params
 ip_addr	cm.h	/^    char ip_addr[64];$/;"	m	struct:airpro_broker
 ip_addr	cm.h	/^    char ip_addr[64];$/;"	m	struct:device_info
+ip_client	airpro_mgr_msg.h	/^    char ip_client[64];$/;"	m	struct:airpro_static_lease_entry
+ip_dns	airpro_mgr_msg.h	/^    char ip_dns[64];$/;"	m	struct:airpro_static_lease_entry
+ip_gw	airpro_mgr_msg.h	/^    char ip_gw[64];$/;"	m	struct:airpro_static_lease_entry
+ip_gw	airpro_mgr_msg.h	/^    char ip_gw[64];$/;"	m	struct:airpro_static_route_entry
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:airpro_dhcp_lease_entry
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:airpro_static_lease_entry
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:airpro_static_route_entry
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:airpro_vlan_entry
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:bridge_mode_static_params
+ip_netmask	airpro_mgr_msg.h	/^    char ip_netmask[64];$/;"	m	struct:nat_mode_static_params
+ip_source	airpro_mgr_msg.h	/^    int ip_source;$/;"	m	struct:airpro_vlan_entry
+ip_target	airpro_mgr_msg.h	/^    char ip_target[64];$/;"	m	struct:airpro_static_route_entry
+ip_type	airpro_mgr_msg.h	/^    enum bridge_mode_ip_type ip_type;$/;"	m	struct:airpro_bridge_mode_config	typeref:enum:airpro_bridge_mode_config::bridge_mode_ip_type
+ip_type	airpro_mgr_msg.h	/^    enum nat_mode_ip_type ip_type;$/;"	m	struct:airpro_nat_mode_config	typeref:enum:airpro_nat_mode_config::nat_mode_ip_type
+ipaddr	airpro_mgr_msg.h	/^        struct airpro_acl_ipaddr ipaddr;$/;"	m	union:airpro_acl_config::airpro_acl_param	typeref:struct:airpro_acl_config::airpro_acl_param::airpro_acl_ipaddr
+isolate	airpro_mgr_msg.h	/^    int isolate;$/;"	m	struct:airpro_mgr_wlan_vap_params
+isolate	airpro_mgr_msg.h	/^    int isolate;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+isp_download_speed	airpro_mgr_msg.h	/^    double isp_download_speed;$/;"	m	struct:airpro_system_event_type_isp_info
+isp_external_ip	airpro_mgr_msg.h	/^    char isp_external_ip[64];$/;"	m	struct:airpro_system_event_type_isp_info
+isp_name	airpro_mgr_msg.h	/^    char isp_name[64];$/;"	m	struct:airpro_system_event_type_isp_info
+isp_upload_speed	airpro_mgr_msg.h	/^    double isp_upload_speed;$/;"	m	struct:airpro_system_event_type_isp_info
 keepalive	cm.h	/^    int keepalive;$/;"	m	struct:mosq_config
+key	airpro_mgr_msg.h	/^    char key[32];$/;"	m	struct:airpro_mgr_wlan_vap_params
+key	airpro_mgr_msg.h	/^    char key[32];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+latitude	airpro_mgr_msg.h	/^    double latitude;$/;"	m	struct:airpro_system_event_type_isp_info
+lease_time	airpro_mgr_msg.h	/^    int lease_time;$/;"	m	struct:airpro_dhcp_lease_entry
+len	airpro_mgr_msg.h	/^    int len;$/;"	m	struct:airpro_mgr_data
+lock	airpro_mgr_msg.h	/^    pthread_mutex_t lock;$/;"	m	struct:airpro_wifi_cp_data
 lock	cm.h	/^    pthread_mutex_t lock;$/;"	m	struct:airpro_sm
+longitude	airpro_mgr_msg.h	/^    double longitude;$/;"	m	struct:airpro_system_event_type_isp_info
+mac	airpro_mgr_msg.h	/^    uint8_t     mac[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+mac	airpro_mgr_msg.h	/^    uint8_t mac[6];$/;"	m	struct:airpro_acl_macaddr
+macaddr	airpro_mgr_msg.h	/^        struct airpro_acl_macaddr macaddr;$/;"	m	union:airpro_acl_config::airpro_acl_param	typeref:struct:airpro_acl_config::airpro_acl_param::airpro_acl_macaddr
+macaddr	airpro_mgr_msg.h	/^    uint8_t            macaddr[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+macaddr	airpro_mgr_msg.h	/^    uint8_t     macaddr[MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+macaddr	airpro_mgr_msg.h	/^    uint8_t macaddr[256][MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_blacklist_clients
+macaddr	airpro_mgr_msg.h	/^    uint8_t macaddr[256][MAX_MAC_ADDR_LEN];$/;"	m	struct:airpro_wifimgr_event_type_get_whitelist_clients
+macaddr	airpro_mgr_msg.h	/^    uint8_t macaddr[6];$/;"	m	struct:airpro_mgr_macaddr
+macaddr	airpro_mgr_msg.h	/^    uint8_t macaddr[6];$/;"	m	struct:airpro_rate_limit_config
+macaddr	airpro_mgr_msg.h	/^    uint8_t macaddr[6];$/;"	m	struct:airpro_wifimgr_event_type_get_client_rate_limit
 macaddr	cm.h	/^    unsigned char macaddr[6];$/;"	m	struct:device_info
 main	main.c	/^int main()$/;"	f
-main	test.c	/^int main()$/;"	f
+map_mac_to_string	msg_dev_json.c	/^static int map_mac_to_string(char *str, unsigned len, void *mac)$/;"	f	file:
+map_network_info_to_json	msg_dev_json.c	/^static void *map_network_info_to_json(struct airpro_cm_handle *cm)$/;"	f	file:
+map_system_info_to_json	msg_dev_json.c	/^static void *map_system_info_to_json(struct airpro_cm_handle *cm)$/;"	f	file:
+map_value_to_json_field	msg_dev_json.c	/^static int map_value_to_json_field(json_object *jobj, int field_type, const char *field_name, void *value)$/;"	f	file:
+map_wifi_info_to_json	msg_dev_json.c	/^static void *map_wifi_info_to_json(struct airpro_cm_handle *cm)$/;"	f	file:
+max_disk_space	airpro_mgr_msg.h	/^    int max_disk_space;$/;"	m	struct:airpro_system_event_type_stats
+max_disk_space_used	airpro_mgr_msg.h	/^    int max_disk_space_used;$/;"	m	struct:airpro_system_event_type_stats
+max_memory	airpro_mgr_msg.h	/^    int max_memory; $/;"	m	struct:airpro_system_event_type_stats
+max_memory_used	airpro_mgr_msg.h	/^    int max_memory_used;$/;"	m	struct:airpro_system_event_type_stats
+max_sta	airpro_mgr_msg.h	/^    int max_sta;$/;"	m	struct:airpro_mgr_wlan_radio_params
+max_sta	airpro_mgr_msg.h	/^    int max_sta;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+max_supported_modes	airpro_mgr_msg.h	/^    int max_supported_modes[MAX_SUPPORTED_MODES];$/;"	m	struct:airpro_wifimgr_event_type_get_supported_modes
+mode	airpro_mgr_msg.h	/^    int mode;$/;"	m	struct:airpro_mgr_wlan_radio_params
+mode	airpro_mgr_msg.h	/^    int mode;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
 mosq	cm.h	/^    struct mosquitto *mosq;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::mosquitto
 mosq_config	cm.h	/^struct mosq_config {$/;"	s
 msglen	cm.h	/^    long msglen; \/* pub *\/$/;"	m	struct:mosq_config
-on_connect	test.c	/^void on_connect(struct mosquitto *mosq, void *obj, int rc)$/;"	f
-on_message	test.c	/^void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg)$/;"	f
+nat_mode_dhcp_params	airpro_mgr_msg.h	/^struct nat_mode_dhcp_params {$/;"	s
+nat_mode_ip_type	airpro_mgr_msg.h	/^enum nat_mode_ip_type {$/;"	g
+nat_mode_params	airpro_mgr_msg.h	/^    union nat_mode_params {$/;"	u	struct:airpro_nat_mode_config
+nat_mode_pppoe_params	airpro_mgr_msg.h	/^struct nat_mode_pppoe_params {$/;"	s
+nat_mode_static_params	airpro_mgr_msg.h	/^struct nat_mode_static_params {$/;"	s
+nbss	airpro_mgr_msg.h	/^    uint8_t         nbss;       \/*number of bss per channel *\/$/;"	m	struct:airpro_chan_scan_results
+nchans	airpro_mgr_msg.h	/^    uint8_t nchans;$/;"	m	struct:airpro_wifimgr_event_type_get_chan_scan_results
+neighbor_list	airpro_mgr_msg.h	/^    struct airpro_neighbor_list neighbor_list[MAX_NEIGHBOUR_COUNT];$/;"	m	struct:airpro_chan_scan_results	typeref:struct:airpro_chan_scan_results::airpro_neighbor_list
+net_mode	airpro_mgr_msg.h	/^    int net_mode;$/;"	m	struct:airpro_network_mode
+network	airpro_mgr_msg.h	/^    char network[10];$/;"	m	struct:airpro_mgr_wlan_vap_params
+network	airpro_mgr_msg.h	/^    char network[10];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+network_mode	airpro_mgr_msg.h	/^    char network_mode[32];$/;"	m	struct:airpro_active_network_config
+num_client_medium	airpro_mgr_msg.h	/^    int num_client_medium;$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_rssi
+num_client_strong	airpro_mgr_msg.h	/^    int num_client_strong;$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_rssi
+num_client_weak	airpro_mgr_msg.h	/^    int num_client_weak;$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_rssi
+num_clients	airpro_mgr_msg.h	/^    uint16_t num_clients;$/;"	m	struct:airpro_wifimgr_event_type_get_blacklist_clients
+num_clients	airpro_mgr_msg.h	/^    uint16_t num_clients;$/;"	m	struct:airpro_wifimgr_event_type_get_whitelist_clients
+num_entry	airpro_mgr_msg.h	/^    int num_entry; $/;"	m	struct:airpro_get_all_static_lease_entry
+num_entry	airpro_mgr_msg.h	/^    int num_entry; $/;"	m	struct:airpro_get_all_static_route_entry
+num_entry	airpro_mgr_msg.h	/^    int num_entry; $/;"	m	struct:airpro_get_all_vlan_entry
+num_entry	airpro_mgr_msg.h	/^    int num_entry;$/;"	m	struct:airpro_get_all_dhcp_lease_entry
+num_iface	airpro_mgr_msg.h	/^    uint16_t    num_iface;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+num_modes	airpro_mgr_msg.h	/^    int num_modes;$/;"	m	struct:airpro_wifimgr_event_type_get_supported_modes
+num_sta	airpro_mgr_msg.h	/^    int num_sta;$/;"	m	struct:airpro_wifimgr_event_get_all_assoc_sta_summary
+num_sta	airpro_mgr_msg.h	/^    int num_sta;$/;"	m	struct:airpro_wifimgr_event_get_assoc_sta_summary
+num_sta	airpro_mgr_msg.h	/^    uint8_t     num_sta;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+opmode	airpro_mgr_msg.h	/^    char opmode[10];$/;"	m	struct:airpro_mgr_wlan_vap_params
+opmode	airpro_mgr_msg.h	/^    char opmode[10];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+os_type	airpro_mgr_msg.h	/^    uint8_t            os_type[64];$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+password	airpro_mgr_msg.h	/^    char password[64];$/;"	m	struct:nat_mode_pppoe_params
+per_radio_client	airpro_mgr_msg.h	/^    int per_radio_client[MAX_NUM_RADIO];$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_count
+phymode	airpro_mgr_msg.h	/^    uint32_t   phymode;$/;"	m	struct:airpro_neighbor_list
+phymode	airpro_mgr_msg.h	/^    uint8_t     phymode;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+pool_name	airpro_mgr_msg.h	/^    char pool_name[32];$/;"	m	struct:airpro_del_dhcp_lease
+pool_name	airpro_mgr_msg.h	/^    char pool_name[32];$/;"	m	struct:airpro_dhcp_lease_entry
 port	cm.h	/^    int port;$/;"	m	struct:mosq_config
 port_num	cm.h	/^    int port_num;$/;"	m	struct:airpro_broker
+pppoe_mode_params	airpro_mgr_msg.h	/^        struct nat_mode_pppoe_params pppoe_mode_params;$/;"	m	union:airpro_nat_mode_config::nat_mode_params	typeref:struct:airpro_nat_mode_config::nat_mode_params::nat_mode_pppoe_params
+pri_dns	airpro_mgr_msg.h	/^    char pri_dns[64];$/;"	m	struct:airpro_dhcp_lease_entry
+proto	airpro_mgr_msg.h	/^        int proto;$/;"	m	union:airpro_acl_config::airpro_acl_param
 protocol_version	cm.h	/^    int protocol_version;$/;"	m	struct:mosq_config
 pub_mode	cm.h	/^    int pub_mode; \/* pub *\/$/;"	m	struct:mosq_config
 qos	cm.h	/^    int qos;$/;"	m	struct:mosq_config
+radio_id	airpro_mgr_msg.h	/^    int radio_id;$/;"	m	struct:airpro_mgr_iface_idx
+radio_id	airpro_mgr_msg.h	/^    int8_t      radio_id;$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+radio_id	airpro_mgr_msg.h	/^    uint8_t     radio_id; \/\/incase multiple ssid with same name on diff band$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+radio_id	airpro_mgr_msg.h	/^    uint8_t radio_id;$/;"	m	struct:airpro_wifimgr_event_get_assoc_sta_summary
+radio_index	airpro_mgr_msg.h	/^    int radio_index;$/;"	m	struct:airpro_mgr_wlan_radio_params
+radio_index	airpro_mgr_msg.h	/^    int radio_index;$/;"	m	struct:airpro_mgr_wlan_vap_params
+radio_type	airpro_mgr_msg.h	/^    char        radio_type[10];$/;"	m	struct:airpro_wifimgr_event_type_get_radio_stats
+radio_type	airpro_mgr_msg.h	/^    char radio_type[10]; \/\/2.4Ghz, 5Ghz, 6Ghz$/;"	m	struct:airpro_mgr_wlan_radio_params
+radio_type	airpro_mgr_msg.h	/^    char radio_type[10];$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
 retain	cm.h	/^    bool retain;$/;"	m	struct:mosq_config
+rf_bw	airpro_mgr_msg.h	/^    int rf_bw;$/;"	m	struct:airpro_mgr_wlan_radio_params
+rf_bw	airpro_mgr_msg.h	/^    int rf_bw;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+route	airpro_mgr_msg.h	/^    struct airpro_static_route_entry route[MAX_STATIC_ROUTE_ENTRY];$/;"	m	struct:airpro_get_all_static_route_entry	typeref:struct:airpro_get_all_static_route_entry::airpro_static_route_entry
+route_name	airpro_mgr_msg.h	/^    char route_name[32];$/;"	m	struct:airpro_del_static_route
+route_name	airpro_mgr_msg.h	/^    char route_name[32];$/;"	m	struct:airpro_static_route_entry
+rssi	airpro_mgr_msg.h	/^    int        rssi;$/;"	m	struct:airpro_neighbor_list
+rssi	airpro_mgr_msg.h	/^    int8_t             rssi;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+rssi	airpro_mgr_msg.h	/^    int8_t      rssi;$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+rule	airpro_mgr_msg.h	/^    enum acl_rule_type rule;$/;"	m	struct:airpro_acl_config	typeref:enum:airpro_acl_config::acl_rule_type
+rx_kbps	airpro_mgr_msg.h	/^    uint32_t           rx_kbps;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+rx_mb	airpro_mgr_msg.h	/^    uint32_t           rx_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+rxratekbps	airpro_mgr_msg.h	/^    uint32_t    rxratekbps;$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+scan_results	airpro_mgr_msg.h	/^    struct airpro_chan_scan_results scan_results[MAX_SCAN_CHAN];$/;"	m	struct:airpro_wifimgr_event_type_get_chan_scan_results	typeref:struct:airpro_wifimgr_event_type_get_chan_scan_results::airpro_chan_scan_results
+sec_dns	airpro_mgr_msg.h	/^    char sec_dns[64];$/;"	m	struct:airpro_dhcp_lease_entry
 serial_num	cm.h	/^    char serial_num[64];$/;"	m	struct:device_info
+server_ip	airpro_mgr_msg.h	/^    char server_ip[64];$/;"	m	struct:airpro_mgr_wlan_vap_params
+server_ip	airpro_mgr_msg.h	/^    char server_ip[64];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+server_name	airpro_mgr_msg.h	/^    char server_name[32];$/;"	m	struct:airpro_mgr_wlan_vap_params
+server_name	airpro_mgr_msg.h	/^    char server_name[32];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
 sm	cm.h	/^    struct airpro_sm sm;$/;"	m	struct:airpro_cm_handle	typeref:struct:airpro_cm_handle::airpro_sm
+ssid	airpro_mgr_msg.h	/^    char ssid[32];$/;"	m	struct:airpro_mgr_wlan_vap_params
+ssid	airpro_mgr_msg.h	/^    char ssid[32];$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+ssid	airpro_mgr_msg.h	/^    uint8_t     ssid[MAX_NWID_LEN+1];$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+ssid	airpro_mgr_msg.h	/^    uint8_t     ssid[MAX_NWID_LEN+1];$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+ssid	airpro_mgr_msg.h	/^    uint8_t    ssid[MAX_NWID_LEN+1];$/;"	m	struct:airpro_neighbor_list
+ssid_len	airpro_mgr_msg.h	/^    uint8_t     ssid_len;$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+ssid_len	airpro_mgr_msg.h	/^    uint8_t     ssid_len;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+ssid_len	airpro_mgr_msg.h	/^    uint8_t    ssid_len;$/;"	m	struct:airpro_neighbor_list
+sta_summary	airpro_mgr_msg.h	/^    struct airpro_wifimgr_assoc_sta_summary sta_summary[AIRPRO_MAX_STA];$/;"	m	struct:airpro_wifimgr_event_get_all_assoc_sta_summary	typeref:struct:airpro_wifimgr_event_get_all_assoc_sta_summary::airpro_wifimgr_assoc_sta_summary
+sta_summary	airpro_mgr_msg.h	/^    struct airpro_wifimgr_assoc_sta_summary sta_summary[AIRPRO_MAX_STA];$/;"	m	struct:airpro_wifimgr_event_get_assoc_sta_summary	typeref:struct:airpro_wifimgr_event_get_assoc_sta_summary::airpro_wifimgr_assoc_sta_summary
+start_addr	airpro_mgr_msg.h	/^    int start_addr;$/;"	m	struct:airpro_dhcp_lease_entry
 state	cm.h	/^    int state;$/;"	m	struct:airpro_sm
+static_lease	airpro_mgr_msg.h	/^    struct airpro_static_lease_entry static_lease[MAX_STATIC_LEASE_ENTRY];$/;"	m	struct:airpro_get_all_static_lease_entry	typeref:struct:airpro_get_all_static_lease_entry::airpro_static_lease_entry
+static_lease_name	airpro_mgr_msg.h	/^    char static_lease_name[32];$/;"	m	struct:airpro_del_static_lease_entry
+static_mode_params	airpro_mgr_msg.h	/^        struct nat_mode_static_params static_mode_params;$/;"	m	union:airpro_nat_mode_config::nat_mode_params	typeref:struct:airpro_nat_mode_config::nat_mode_params::nat_mode_static_params
+static_mode_params	airpro_mgr_msg.h	/^    struct bridge_mode_static_params static_mode_params;$/;"	m	struct:airpro_bridge_mode_config	typeref:struct:airpro_bridge_mode_config::bridge_mode_static_params
+supported_modes	airpro_mgr_msg.h	/^enum supported_modes {$/;"	g
+system_mode	airpro_mgr_msg.h	/^    int system_mode;$/;"	m	struct:airpro_system_mode
+tag	airpro_mgr_msg.h	/^    int tag;$/;"	m	struct:airpro_vlan_entry
+test_in_progress	airpro_mgr_msg.h	/^    int test_in_progress;$/;"	m	struct:airpro_system_event_type_isp_info
 topic	cm.h	/^    char *topic; \/* pub *\/$/;"	m	struct:mosq_config
+tot_rx_in_mb	airpro_mgr_msg.h	/^    uint64_t    tot_rx_in_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+tot_rx_pkts	airpro_mgr_msg.h	/^    uint64_t    tot_rx_pkts;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+tot_tx_in_mb	airpro_mgr_msg.h	/^    uint64_t    tot_tx_in_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+tot_tx_pkts	airpro_mgr_msg.h	/^    uint64_t    tot_tx_pkts;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+tot_tx_rx_mb	airpro_mgr_msg.h	/^    uint32_t           tot_tx_rx_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+tot_usage_in_mb	airpro_mgr_msg.h	/^    uint64_t    tot_usage_in_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+total_client	airpro_mgr_msg.h	/^    int total_client;$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_count
+total_client	airpro_mgr_msg.h	/^    int total_client;$/;"	m	struct:airpro_wifimgr_event_type_get_all_client_rssi
+tx_kbps	airpro_mgr_msg.h	/^    uint32_t           tx_kbps;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+tx_mb	airpro_mgr_msg.h	/^    uint32_t           tx_mb;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+txpower	airpro_mgr_msg.h	/^    int txpower;$/;"	m	struct:airpro_mgr_wlan_radio_params
+txpower	airpro_mgr_msg.h	/^    int txpower;$/;"	m	struct:airpro_wifimgr_event_wlan_radio_params
+txpower	airpro_mgr_msg.h	/^    uint8_t            txpower;$/;"	m	struct:airpro_wifimgr_event_type_get_sta_stats
+txratekbps	airpro_mgr_msg.h	/^    uint32_t    txratekbps;$/;"	m	struct:airpro_wifimgr_assoc_sta_summary
+type	airpro_mgr_msg.h	/^    char type;  \/\/Type of cmd$/;"	m	struct:airpro_mgr_data
+u	airpro_mgr_msg.h	/^    } u;$/;"	m	struct:airpro_nat_mode_config	typeref:union:airpro_nat_mode_config::nat_mode_params
+u	airpro_mgr_msg.h	/^    }u;$/;"	m	struct:airpro_acl_config	typeref:union:airpro_acl_config::airpro_acl_param
+ul_bytes_per_sec	airpro_mgr_msg.h	/^    uint32_t ul_bytes_per_sec;$/;"	m	struct:airpro_rate_limit_config
+ul_bytes_per_sec	airpro_mgr_msg.h	/^    uint32_t ul_bytes_per_sec;$/;"	m	struct:airpro_wifimgr_event_type_get_client_rate_limit
+uptime	airpro_mgr_msg.h	/^    int uptime;$/;"	m	struct:airpro_system_event_type_stats
+username	airpro_mgr_msg.h	/^    char username[64];$/;"	m	struct:nat_mode_pppoe_params
+val	airpro_mgr_msg.h	/^    int val;$/;"	m	struct:airpro_wifimgr_event_type_int
+vap_id	airpro_mgr_msg.h	/^    int vap_id;$/;"	m	struct:airpro_mgr_iface_idx
+vap_id	airpro_mgr_msg.h	/^    uint8_t     vap_id;$/;"	m	struct:airpro_wifimgr_event_type_get_ap_stats
+vap_id	airpro_mgr_msg.h	/^    uint8_t vap_id;$/;"	m	struct:airpro_wifimgr_event_get_assoc_sta_summary
+vap_index	airpro_mgr_msg.h	/^    int vap_index;$/;"	m	struct:airpro_mgr_wlan_vap_params
+vlan	airpro_mgr_msg.h	/^    struct airpro_vlan_entry vlan[MAX_VLAN_ENTRY];$/;"	m	struct:airpro_get_all_vlan_entry	typeref:struct:airpro_get_all_vlan_entry::airpro_vlan_entry
+vlan_id	airpro_mgr_msg.h	/^    int vlan_id;$/;"	m	struct:airpro_bridge_mode_config
+vlan_id	airpro_mgr_msg.h	/^    int vlan_id;$/;"	m	struct:airpro_vlan_entry
+vlan_name	airpro_mgr_msg.h	/^    char vlan_name[32];$/;"	m	struct:airpro_del_vlan_entry
+vlan_name	airpro_mgr_msg.h	/^    char vlan_name[32];$/;"	m	struct:airpro_vlan_entry
+wan_interface	airpro_mgr_msg.h	/^    char wan_interface[32];$/;"	m	struct:airpro_active_network_config
+wds	airpro_mgr_msg.h	/^    int wds;$/;"	m	struct:airpro_mgr_wlan_vap_params
+wds	airpro_mgr_msg.h	/^    int wds;$/;"	m	struct:airpro_wifimgr_event_wlan_vap_params
+wifi_device	airpro_mgr_msg.h	/^    char wifi_device[10]; \/\/wifi0, wifi1, wifi2$/;"	m	struct:airpro_mgr_wlan_vap_params
