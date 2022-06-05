@@ -21,10 +21,14 @@ def on_connect(subs, obj, flags, rc):
     
 
 def on_message(subs, obj, msg):
-    data = msg.payload.decode()    
+    data = msg.payload.decode()
+    print(type(data))    
     data = json.loads(data)
-    del data['uuid'] , data['macaddr'], data['serial_num']    
-    print(msg.topic + " " + str(data))
+    # data = json.dumps(data)
+    del data['uuid'] , data['macaddr'], data['serial_num']
+    device_id = data['device_id']
+    data['device_id'] = Device.objects.get(device_id=device_id)   
+    # print(msg.topic + " " + str(data))
     if data['type'] == 1000:
         SystemDeviceInfo.objects.create(**data)
 
@@ -37,7 +41,7 @@ def on_message(subs, obj, msg):
     publisher = server_mqtt.Client("PUBLISHER")
     subs.connect(broker, port)
     # publisher.username_pw_set(username="airpro_mqtt_server",password="Y3VDWxsijgfuXdE")
-    publisher.publish(msg.topic,"msg recived")
+    publisher.publish("airpro/device/"+str(device_id),"msg recived")
 
     
 

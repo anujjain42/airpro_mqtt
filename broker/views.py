@@ -36,7 +36,8 @@ class DeviceViewSet(ModelViewSet):
             request.data['device_id'] = self.create_device_id()
             res = super().create(request, *args, **kwargs)
             ser['device_id'] = res.data['device_id']          
-            ser['client_topic'] = 'airpro/device/'+res.data['device_id'] 
+            ser['client_topic'] = 'airpro/device/'+res.data['device_id']
+            devices.update(status=False) 
         return Response(ser,status=status.HTTP_200_OK)
 
 
