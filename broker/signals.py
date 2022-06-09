@@ -18,7 +18,8 @@ SYSTEM_UI_URL       = f"{ui_base_url}/organization/system-info/"
 @receiver(post_save, sender=NetworkDeviceInfo)
 def send_config_mqtt_network_client(sender,instance, created, **kwargs):
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
-    
+    headers = {'Content-Type': 'application/json'}
+    print("NETWORK_UI_URL",NETWORK_UI_URL)
     if not created:
         if len(broker_device_obj):
             broker_device_obj = broker_device_obj[0]
@@ -26,30 +27,35 @@ def send_config_mqtt_network_client(sender,instance, created, **kwargs):
             publisher.connect(broker_device_obj.broker,broker_device_obj.port)
             publisher.publish(broker_device_obj.device_topic,str(instance.data))
             data = {"device_id":instance.device_id.device_id,**instance.data}
-            requests.patch(NETWORK_UI_URL, data = data)
+            data = json.dumps(data)
+            requests.patch(NETWORK_UI_URL, data = data , headers=headers)
     else:
         data = {"device_id":instance.device_id.device_id,**instance.data}
-        print(data)
-        requests.post(NETWORK_UI_URL, data = data)
+        data = json.dumps(data)
+        requests.post(NETWORK_UI_URL, data = data, headers=headers)
 
 
 @receiver(post_save, sender=WifiDeviceInfo)
 def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
+    print("WIFI_UI_URL",WIFI_UI_URL)
     if not created:
         if len(broker_device_obj):
             broker_device_obj = broker_device_obj[0]
             publisher = paho.Client("PUBLISHER")
             publisher.connect(broker_device_obj.broker,broker_device_obj.port)
             publisher.publish(broker_device_obj.device_topic,str(instance.data)) 
-            requests.patch(WIFI_UI_URL, data = instance.data)
+            data = {"device_id":instance.device_id.device_id,**instance.data}
+            requests.patch(WIFI_UI_URL, data = data)
     else:
-        requests.post(WIFI_UI_URL, data = instance.data)
+        data = {"device_id":instance.device_id.device_id,**instance.data}
+        requests.post(WIFI_UI_URL, data = data)
 
 
 @receiver(post_save, sender=SystemDeviceInfo)
 def send_config_mqtt_system_client(sender,instance, created, **kwargs):
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
+    print("SYSTEM_UI_URL",SYSTEM_UI_URL)
     if not created:
         if len(broker_device_obj):
             print(broker_device_obj)
