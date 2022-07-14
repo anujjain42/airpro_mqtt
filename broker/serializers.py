@@ -31,3 +31,13 @@ class BrokerDetailsSerializer(ModelSerializer):
         model = BrokerDetail
         fields = '__all__'
 
+class UnregisteredDeviceSerializer(ModelSerializer):
+    class Meta:
+        model = UnregisteredDevice
+        fields = '__all__'
+
+class BrokerDeviceTopicSerializer(ModelSerializer):
+    class Meta:
+        model = BrokerDeviceTopic
+        fields = '__all__'
+        depth = 1

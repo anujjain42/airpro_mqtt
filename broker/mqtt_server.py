@@ -1,7 +1,7 @@
 import paho.mqtt.client as server_mqtt
 import json
-import time
-from .models import *
+from broker.models import Device
+from broker.customabstractmethod import getTypeObject
 
 # broker = "122.170.105.253"
 broker = "127.0.0.1"
@@ -22,22 +22,15 @@ def on_connect(subs, obj, flags, rc):
 
 def on_message(subs, obj, msg):
     data = msg.payload.decode()
-    print(type(data))    
     data = json.loads(data)
     # data = json.dumps(data)
     del data['uuid'] , data['macaddr'], data['serial_num']
     device_id = data['device_id']
-    data['device_id'] = Device.objects.get(device_id=device_id)   
-    # print(msg.topic + " " + str(data))
-    if data['type'] == 1000:
-        SystemDeviceInfo.objects.create(**data)
+    data['device_id'] = Device.objects.get(device_id=device_id)  
 
-    elif data['type'] == 1001:
-        NetworkDeviceInfo.objects.create(**data)
+    mqtt_device_obj = getTypeObject(data['type'])
+    mqtt_device_obj.mqttDataDumpToDB(**data)
 
-    elif data['type'] == 1002:
-        WifiDeviceInfo.objects.create(**data)
-    
     publisher = server_mqtt.Client("PUBLISHER")
     subs.connect(broker, port)
     # publisher.username_pw_set(username="airpro_mqtt_server",password="Y3VDWxsijgfuXdE")

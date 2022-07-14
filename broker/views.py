@@ -59,3 +59,16 @@ class SystemDeviceInfoInfoViewSet(ModelViewSet):
     serializer_class = SystemDeviceInfoSerializer
     http_method_names = ['get','post','patch']
     # permission_classes = [IsAuthenticated]
+
+
+class UnregisteredDeviceViewSet(ModelViewSet):
+    queryset = UnregisteredDevice.objects.all()
+    serializer_class = UnregisteredDeviceSerializer
+    http_method_names = ['get','post','patch']
+
+
+class BrokerDeviceTopicViewSet(ModelViewSet):
+    queryset = BrokerDeviceTopic.objects.all()
+    serializer_class = BrokerDeviceTopicSerializer
+    http_method_names = ['get',]
+    lookup_field = "device__device_id"

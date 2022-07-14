@@ -28,5 +28,5 @@ subs = server_mqtt.Client("MQTT_AIRPRO_SUBS_CLIENT")
 subs.on_connect = on_connect
 subs.on_message = on_message
 subs.connect(broker, port)
-subs.loop_forever()
-# subs.loop_start()
+# subs.loop_forever()
+subs.loop_start()
