@@ -11,10 +11,10 @@ broker = "122.170.105.253"
 port = 1883
 ui_base_url = settings.UI_BASE_URL
 
-NETWORK_UI_URL      = f"{ui_base_url}/organization/network-info//"
-WIFI_UI_URL         = f"{ui_base_url}/organization/wifi-info//"
-SYSTEM_UI_URL       = f"{ui_base_url}/organization/system-info//"
-DEVICE_UI_URL       = f"{ui_base_url}/organization/device//"
+NETWORK_UI_URL      = f"{ui_base_url}/organization/network-info/"
+WIFI_UI_URL         = f"{ui_base_url}/organization/wifi-info/"
+SYSTEM_UI_URL       = f"{ui_base_url}/organization/system-info/"
+DEVICE_UI_URL       = f"{ui_base_url}/organization/device/"
 
 headers             = {'Content-Type': 'application/json'}
 
