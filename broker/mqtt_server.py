@@ -23,13 +23,16 @@ def on_connect(subs, obj, flags, rc):
 def on_message(subs, obj, msg):
     data = msg.payload.decode()
     data = json.loads(data)
+    print(data)
     # data = json.dumps(data)
-    del data['uuid'] , data['macaddr'], data['serial_num']
+    del data['macaddr']
     device_id = data['device_id']
     data['device_id'] = Device.objects.get(device_id=device_id)  
 
     mqtt_device_obj = getTypeObject(data['type'])
-    mqtt_device_obj.mqttDataDumpToDB(**data)
+    print(mqtt_device_obj)
+    if mqtt_device_obj:
+        mqtt_device_obj.mqttDataDumpToDB(**data)
 
     publisher = server_mqtt.Client("PUBLISHER")
     subs.connect(broker, port)
