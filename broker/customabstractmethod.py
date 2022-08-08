@@ -1,6 +1,6 @@
 import paho.mqtt.client as paho
 from abc import abstractmethod
-from .models import *
+from broker.models import *
 
 class MQTTDumpData:
 
@@ -11,19 +11,33 @@ class MQTTDumpData:
 class SystemDumpData(MQTTDumpData):
 
     def mqttDataDumpToDB(Self,*args,**kwargs):
-        SystemDeviceInfo.objects.create(**kwargs)
+        try:
+            object = SystemDeviceInfo.objects.get(device_id=kwargs['device_id']) 
+            object.update(**kwargs)
+        except SystemDeviceInfo.DoesNotExist:
+            SystemDeviceInfo.objects.create(**kwargs)
+        
 
 
 class NetworkDumpData(MQTTDumpData):
 
     def mqttDataDumpToDB(Self,*args,**kwargs):
-        NetworkDeviceInfo.objects.create(**kwargs)
+        try:
+            object = NetworkDeviceInfo.objects.get(device_id=kwargs['device_id']) 
+            object.update(**kwargs)
+        except NetworkDeviceInfo.DoesNotExist:
+            NetworkDeviceInfo.objects.create(**kwargs)
+
 
 class WifiDumpData(MQTTDumpData):
 
     def mqttDataDumpToDB(Self,*args,**kwargs):
-        WifiDeviceInfo.objects.create(**kwargs)
-
+        try:
+            object = WifiDeviceInfo.objects.get(device_id=kwargs['device_id']) 
+            object.update(**kwargs)
+        except WifiDeviceInfo.DoesNotExist:
+            WifiDeviceInfo.objects.create(**kwargs)
+            
 
 def getTypeObject(device_type):
     """

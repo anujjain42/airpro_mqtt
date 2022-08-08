@@ -25,7 +25,6 @@ def on_message(subs, obj, msg):
     data = json.loads(data)
     print(data)
     # data = json.dumps(data)
-    del data['macaddr']
     device_id = data['device_id']
     data['device_id'] = Device.objects.get(device_id=device_id)  
 

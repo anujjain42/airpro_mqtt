@@ -30,6 +30,7 @@ class BaseModel(models.Model):
     device_id       = models.ForeignKey(Device,on_delete=models.CASCADE)    
     type            = models.CharField(max_length=255, blank=True, null=True)
     flag            = models.CharField(max_length=255, blank=True, null=True)
+    macaddr         = models.CharField(max_length=255, blank=True, null=True)
     ver             = models.CharField(max_length=255, blank=True, null=True)
     timestamp       = models.CharField(max_length=255, blank=True, null=True)
     token           = models.CharField(max_length=255, blank=True, null=True)   
@@ -53,7 +54,6 @@ class NetworkDeviceInfo(BaseModel):
 
     def __str__(self) -> str:
         return str(self.device_id.mac_address)
-
 
 class SystemDeviceInfo(BaseModel):
     pass

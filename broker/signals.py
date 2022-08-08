@@ -1,5 +1,6 @@
 import requests
 import json
+from requests.auth import HTTPBasicAuth
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -16,6 +17,7 @@ WIFI_UI_URL         = f"{ui_base_url}/wifi-info/"
 SYSTEM_UI_URL       = f"{ui_base_url}/system-info/"
 DEVICE_UI_URL       = f"{ui_base_url}/device/"
 
+auth                = HTTPBasicAuth('admin@admin.com', 'dots@123')
 headers             = {'Content-Type': 'application/json'}
 
 @receiver(post_save, sender=NetworkDeviceInfo)
@@ -51,10 +53,10 @@ def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
                 broker_device_obj.port, broker_device_obj.device_topic
             ) 
             data = {"device_id":instance.device_id.device_id,**instance.data}
-            requests.patch(WIFI_UI_URL, data = data, headers=headers)
+            requests.patch(WIFI_UI_URL, data = json.dumps(data), headers=headers)
     else:
         data = {"device_id":instance.device_id.device_id,**instance.data}
-        requests.post(WIFI_UI_URL, data = data, headers=headers )
+        requests.post(WIFI_UI_URL, data = json.dumps(data), headers=headers )
 
 
 @receiver(post_save, sender=SystemDeviceInfo)
@@ -70,19 +72,19 @@ def send_config_mqtt_system_client(sender,instance, created, **kwargs):
                 broker_device_obj.port, broker_device_obj.device_topic
             )
             data = {"device_id":instance.device_id.device_id,**instance.data['system_info']}
-            requests.patch(SYSTEM_UI_URL, data = instance.data, headers=headers)
+            requests.patch(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
     else:
         data = {"device_id":instance.device_id.device_id,**instance.data['system_info']}
-        requests.post(SYSTEM_UI_URL, data = data, headers=headers)
+        requests.post(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
 
 
 @receiver(post_save, sender=Device)
 def create_client_topic(sender,instance, created, **kwargs):
-    if created:
+    if not created:
         broker_obj = BrokerDetail.objects.get(id=1)
         data = {
             "broker":broker_obj, "device":instance, "device_topic":'airpro/device/'+instance.device_id
         }
         BrokerDeviceTopic.objects.create(**data)
         data = {"device_id":instance.device_id,"mqtt_status":True}
-        requests.patch(DEVICE_UI_URL+str(instance.serial_number), data = data, headers=headers)
+        res = requests.patch(f'{DEVICE_UI_URL}{str(instance.serial_number)}/', data = json.dumps(data), headers=headers,auth=auth)
