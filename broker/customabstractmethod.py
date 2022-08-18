@@ -43,7 +43,7 @@ def getTypeObject(device_type):
     """
         Return Model objects based on type
     """
-    type_obj = {"1000":SystemDumpData(),"1001":NetworkDumpData(),"1006":WifiDumpData()}
+    type_obj = {"1005":SystemDumpData(),"1001":NetworkDumpData(),"1006":WifiDumpData()}
     return type_obj[str(device_type)] if str(device_type) in type_obj.keys() else  None
 
 def publish_to_mqtt(msg, broker, port, device_topic):

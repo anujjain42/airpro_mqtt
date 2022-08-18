@@ -16,6 +16,10 @@ NETWORK_UI_URL      = f"{ui_base_url}/network-info/"
 WIFI_UI_URL         = f"{ui_base_url}/wifi-info/"
 SYSTEM_UI_URL       = f"{ui_base_url}/system-info/"
 DEVICE_UI_URL       = f"{ui_base_url}/device/"
+DEVICE_RADIO_URL       = f"{ui_base_url}/device-redio/"
+SSID_URL            = f"{ui_base_url}/ssid-info/"
+
+
 
 auth                = HTTPBasicAuth('admin@admin.com', 'dots@123')
 headers             = {'Content-Type': 'application/json'}
@@ -28,10 +32,10 @@ def send_config_mqtt_network_client(sender,instance, created, **kwargs):
     if not created:
         if len(broker_device_obj):
             broker_device_obj = broker_device_obj[0]
-            publish_to_mqtt(
-                instance.data, broker_device_obj.broker,
-                broker_device_obj.port, broker_device_obj.device_topic
-            )
+            # publish_to_mqtt(
+            #     instance.data, broker_device_obj.broker,
+            #     broker_device_obj.port, broker_device_obj.device_topic
+            # )
             data = {"device_id":instance.device_id.device_id,**instance.data}
             data = json.dumps(data)
             requests.patch(NETWORK_UI_URL, data = data , headers=headers)
@@ -48,15 +52,25 @@ def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
     if not created:
         if len(broker_device_obj):
             broker_device_obj = broker_device_obj[0]
-            publish_to_mqtt(
-                instance.data, broker_device_obj.broker,
-                broker_device_obj.port, broker_device_obj.device_topic
-            ) 
-            data = {"device_id":instance.device_id.device_id,**instance.data}
-            requests.patch(WIFI_UI_URL, data = json.dumps(data), headers=headers)
+            count = ssid_count= 0
+            for radio in instance.data['uci_configs']['radio_list']:
+                count+=1
+                data = {"device_id":instance.device_id.device_id,**radio,"radio_index":count}
+                res = requests.post(DEVICE_RADIO_URL, data = json.dumps(data), headers=headers)
+                for ssid in radio['vap_list']:
+                    ssid_count +=1 
+                    ssid_data = {"device_id":instance.device_id.device_id,'radio':res.json()['id'],**ssid,'ssid_index':ssid_count}                    
+                    requests.post(SSID_URL, data = json.dumps(ssid_data), headers=headers)           
     else:
-        data = {"device_id":instance.device_id.device_id,**instance.data}
-        requests.post(WIFI_UI_URL, data = json.dumps(data), headers=headers )
+        count = ssid_count= 0
+        for radio in instance.data['uci_configs']['radio_list']:
+            count+=1
+            data = {"device_id":instance.device_id.device_id,**radio,"radio_index":count}
+            res = requests.post(DEVICE_RADIO_URL, data = json.dumps(data), headers=headers)
+            for ssid in radio['vap_list']:
+                ssid_count +=1 
+                ssid_data = {"device_id":instance.device_id.device_id,'radio':res.json()['id'],**ssid,'ssid_index':ssid_count}                    
+                requests.post(SSID_URL, data = json.dumps(ssid_data), headers=headers)
 
 
 @receiver(post_save, sender=SystemDeviceInfo)
@@ -65,16 +79,16 @@ def send_config_mqtt_system_client(sender,instance, created, **kwargs):
     print("SYSTEM_UI_URL",SYSTEM_UI_URL)
     if not created:
         if len(broker_device_obj):
-            print(broker_device_obj)
+            print(len(broker_device_obj))
             broker_device_obj = broker_device_obj[0]
-            publish_to_mqtt(
-                instance.data, broker_device_obj.broker,
-                broker_device_obj.port, broker_device_obj.device_topic
-            )
-            data = {"device_id":instance.device_id.device_id,**instance.data['system_info']}
-            requests.patch(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
+            # publish_to_mqtt(
+            #     instance.data, broker_device_obj.broker,
+            #     broker_device_obj.port, broker_device_obj.device_topic
+            # )
+            data = {"device_id":instance.device_id.device_id,**instance.data['system_stats']['system_stats_list']}
+            requests.patch(f'{SYSTEM_UI_URL}5131592c-eb59-4fad-9b50-e638ca8c0ab0/', data = json.dumps(data), headers=headers)
     else:
-        data = {"device_id":instance.device_id.device_id,**instance.data['system_info']}
+        data = {"device_id":instance.device_id.device_id,**instance.data['system_stats']['system_stats_list']}
         requests.post(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
 
 
