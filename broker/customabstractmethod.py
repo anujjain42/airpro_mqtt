@@ -13,7 +13,7 @@ class SystemDumpData(MQTTDumpData):
     def mqttDataDumpToDB(Self,*args,**kwargs):
         try:
             object = SystemDeviceInfo.objects.get(device_id=kwargs['device_id']) 
-            object.update(**kwargs)
+            SystemDeviceInfo.objects.create(**kwargs)
         except SystemDeviceInfo.DoesNotExist:
             SystemDeviceInfo.objects.create(**kwargs)
         
@@ -24,7 +24,7 @@ class NetworkDumpData(MQTTDumpData):
     def mqttDataDumpToDB(Self,*args,**kwargs):
         try:
             object = NetworkDeviceInfo.objects.get(device_id=kwargs['device_id']) 
-            object.update(**kwargs)
+            NetworkDeviceInfo.objects.create(**kwargs)
         except NetworkDeviceInfo.DoesNotExist:
             NetworkDeviceInfo.objects.create(**kwargs)
 
@@ -34,7 +34,7 @@ class WifiDumpData(MQTTDumpData):
     def mqttDataDumpToDB(Self,*args,**kwargs):
         try:
             object = WifiDeviceInfo.objects.get(device_id=kwargs['device_id']) 
-            object.update(**kwargs)
+            WifiDeviceInfo.objects.create(**kwargs)
         except WifiDeviceInfo.DoesNotExist:
             WifiDeviceInfo.objects.create(**kwargs)
             
