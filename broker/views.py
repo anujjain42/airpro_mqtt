@@ -22,8 +22,8 @@ class DeviceViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         data =  request.data
         devices = UnregisteredDevice.objects.filter(serial_number=data['serial_number'])
-        if (len(devices) and not devices[0].status): return Response({"messages":"Serial number already registred"},status=status.HTTP_306_RESERVED)
-        elif(len(devices)==0):return Response({"messages":"Serial number Not vaild"},status=status.HTTP_404_NOT_FOUND)    
+        # if (len(devices) and not devices[0].status): return Response({"messages":"Serial number already registred"},status=status.HTTP_306_RESERVED)
+        # elif(len(devices)==0):return Response({"messages":"Serial number Not vaild"},status=status.HTTP_404_NOT_FOUND)    
         
         obj = Device.objects.filter(**data) 
         broker_obj = BrokerDetail.objects.get(id=1)

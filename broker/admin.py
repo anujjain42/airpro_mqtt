@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from broker.models import (
     WifiDeviceInfo, NetworkDeviceInfo, SystemDeviceInfo, Device, 
-    BrokerDetail, BrokerDeviceTopic, UnregisteredDevice
+    BrokerDetail, BrokerDeviceTopic, UnregisteredDevice, ClientInfo
 )
 # Register your models here.
 
@@ -12,6 +12,7 @@ admin.site.register(SystemDeviceInfo)
 admin.site.register(Device)
 admin.site.register(BrokerDetail)
 admin.site.register(BrokerDeviceTopic)
+admin.site.register(ClientInfo)
 
 @admin.register(UnregisteredDevice)
 class UnregisteredDeviceAdmin(admin.ModelAdmin):

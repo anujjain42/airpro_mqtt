@@ -61,6 +61,12 @@ class SystemDeviceInfo(BaseModel):
     def __str__(self) -> str:
         return str(self.device_id.mac_address)
 
+class ClientInfo(BaseModel):
+    pass
+
+    def __str__(self) -> str:
+        return str(self.device_id.mac_address)
+
 class BrokerDetail(models.Model):
     broker_ip   = models.GenericIPAddressField()
     port        = models.IntegerField(default=1883)
