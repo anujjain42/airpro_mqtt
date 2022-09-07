@@ -3,8 +3,8 @@ import json
 from broker.models import Device
 from broker.customabstractmethod import getTypeObject
 
-# broker = "122.170.105.253"
-broker = "127.0.0.1"
+broker = "122.170.105.253"
+# broker = "127.0.0.1"
 port = 1883
 
 #connecting

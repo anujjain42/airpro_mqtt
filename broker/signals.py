@@ -5,7 +5,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import paho.mqtt.client as paho
-from broker.customabstractmethod import publish_to_mqtt
+from broker.customabstractmethod import publish_to_mqtt, update_device_id
 from broker.models import ClientInfo, WifiDeviceInfo, NetworkDeviceInfo, Device, BrokerDeviceTopic, BrokerDetail, SystemDeviceInfo
 
 broker = "122.170.105.253"
@@ -19,7 +19,7 @@ DEVICE_UI_URL       = f"{ui_base_url}/device/"
 DEVICE_DETAILS_UI_URL = f"{ui_base_url}/device-details/"
 DEVICE_RADIO_URL    = f"{ui_base_url}/device-redio/"
 SSID_URL            = f"{ui_base_url}/ssid-info/"
-SSID_URL_DELETE     = f"{ui_base_url}delete-by-device-id/"
+SSID_URL_DELETE     = f"{SSID_URL}delete-by-device-id/"
 DEVICE_STATISTICS_URL = f"{ui_base_url}/device-statistics/"
 CLIENT_URL          = f"{ui_base_url}/client-list/"
 
@@ -30,9 +30,11 @@ headers             = {'Content-Type': 'application/json'}
 
 @receiver(post_save, sender=NetworkDeviceInfo)
 def send_config_mqtt_network_client(sender,instance, created, **kwargs):
+    update_device_id(instance.device_id.device_id, str(instance.device_id.serial_number))
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
     if not created:
-        ...
+        res = requests.delete(f"{DEVICE_STATISTICS_URL}delete-by-device-id/{instance.device_id.device_id}/",auth=auth)
+        res = requests.delete(f"{DEVICE_DETAILS_UI_URL}delete-by-device-id/{instance.device_id.device_id}/",auth=auth)
 
     for ap_stats in instance.data['ap_stats']['ap_stats_list']:
         ap_stats_data = {
@@ -49,14 +51,15 @@ def send_config_mqtt_network_client(sender,instance, created, **kwargs):
             "status":ap_stats['status']
         }
         data = {"device_id":instance.device_id.device_id,**ap_stats_data}
+        requests.patch(f'{DEVICE_UI_URL}{str(instance.serial_number)}/', data = json.dumps({'status':'Online'}), headers=headers,auth=auth)
         res = requests.post(DEVICE_STATISTICS_URL, data =json.dumps(data), headers=headers,auth=auth)
         data = {"device_id":instance.device_id.device_id,**ap_device_details_data}
         res = requests.post(DEVICE_DETAILS_UI_URL, data =json.dumps(data), headers=headers,auth=auth)
-        print(res.json())
 
 
 @receiver(post_save, sender=WifiDeviceInfo)
 def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
+    update_device_id(instance.device_id.device_id, str(instance.device_id.serial_number))
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
     print("WIFI_UI_URL",WIFI_UI_URL)
     if not created:
@@ -73,11 +76,13 @@ def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
         for ssid in radio['vap_list']:
             ssid_count +=1 
             ssid_data = {"device_id":instance.device_id.device_id,'radio':res.json()['id'],**ssid,'ssid_index':ssid_count}                    
-            requests.post(SSID_URL, data = json.dumps(ssid_data), headers=headers)   
+            res = requests.post(SSID_URL, data = json.dumps(ssid_data), headers=headers) 
+            print(res.json())  
 
 
 @receiver(post_save, sender=SystemDeviceInfo)
 def send_config_mqtt_system_client(sender,instance, created, **kwargs):
+    update_device_id(instance.device_id.device_id, str(instance.device_id.serial_number))
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
     print("SYSTEM_UI_URL",SYSTEM_UI_URL)
     if not created:
@@ -85,17 +90,20 @@ def send_config_mqtt_system_client(sender,instance, created, **kwargs):
             broker_device_obj = broker_device_obj[0]
             requests.delete(f"{SYSTEM_UI_URL}delete-by-device-id/{instance.device_id}/")
     data = {"device_id":instance.device_id.device_id,**instance.data['system_stats']['system_stats_list']}
-    requests.post(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
+    res = requests.post(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
+    print(res.json())
 
 
 @receiver(post_save,sender=ClientInfo)
 def send_config_mqtt_client(sender, instance, created, **kwagrs):
+    update_device_id(instance.device_id.device_id, str(instance.device_id.serial_number))
     if not created:
         requests.delete(f"{CLIENT_URL}delete-by-device-id/{instance.device_id}/")
     
     for sta_stats in instance.data['sta_stats']['sta_stats_list']:
         data = {"device_id":instance.device_id.device_id,"client_data":sta_stats}
         res = requests.post(CLIENT_URL, data = json.dumps(data), headers=headers)
+        print(res.json())
 
 
 @receiver(post_save, sender=Device)
@@ -106,5 +114,4 @@ def create_client_topic(sender,instance, created, **kwargs):
             "broker":broker_obj, "device":instance, "device_topic":'airpro/device/'+instance.device_id
         }
         BrokerDeviceTopic.objects.create(**data)
-        data = {"device_id":instance.device_id,"mqtt_status":True, 'status':'Online'}
-        res = requests.patch(f'{DEVICE_UI_URL}{str(instance.serial_number)}/', data = json.dumps(data), headers=headers,auth=auth)
+        update_device_id(instance.device_id, str(instance.serial_number))
