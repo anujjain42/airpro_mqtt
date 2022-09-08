@@ -4,8 +4,7 @@ from requests.auth import HTTPBasicAuth
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import paho.mqtt.client as paho
-from broker.customabstractmethod import publish_to_mqtt, update_device_id
+from broker.customabstractmethod import update_device_id
 from broker.models import ClientInfo, WifiDeviceInfo, NetworkDeviceInfo, Device, BrokerDeviceTopic, BrokerDetail, SystemDeviceInfo
 
 broker = "122.170.105.253"
@@ -51,7 +50,6 @@ def send_config_mqtt_network_client(sender,instance, created, **kwargs):
             "status":ap_stats['status']
         }
         data = {"device_id":instance.device_id.device_id,**ap_stats_data}
-        requests.patch(f'{DEVICE_UI_URL}{str(instance.serial_number)}/', data = json.dumps({'status':'Online'}), headers=headers,auth=auth)
         res = requests.post(DEVICE_STATISTICS_URL, data =json.dumps(data), headers=headers,auth=auth)
         data = {"device_id":instance.device_id.device_id,**ap_device_details_data}
         res = requests.post(DEVICE_DETAILS_UI_URL, data =json.dumps(data), headers=headers,auth=auth)
