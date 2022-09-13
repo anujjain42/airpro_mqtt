@@ -61,9 +61,9 @@ def send_config_mqtt_wifi_client(sender,instance, created, **kwargs):
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
     print("WIFI_UI_URL",WIFI_UI_URL)
     if not created:
+        requests.delete(f"{SSID_URL_DELETE}{instance.device_id}/")
+        requests.delete(f"{DEVICE_RADIO_URL}delete-by-device-id/{instance.device_id}/")
         if len(broker_device_obj):
-            requests.delete(f"{SSID_URL_DELETE}{instance.device_id}/")
-            requests.delete(f"{DEVICE_RADIO_URL}delete-by-device-id/{instance.device_id}/")
             broker_device_obj = broker_device_obj[0]
             
     count = ssid_count= 0
@@ -84,9 +84,9 @@ def send_config_mqtt_system_client(sender,instance, created, **kwargs):
     broker_device_obj = instance.device_id.brokerdevicetopic_set.filter(device=instance.device_id)
     print("SYSTEM_UI_URL",SYSTEM_UI_URL)
     if not created:
+        requests.delete(f"{SYSTEM_UI_URL}delete-by-device-id/{instance.device_id}/")
         if len(broker_device_obj):
             broker_device_obj = broker_device_obj[0]
-            requests.delete(f"{SYSTEM_UI_URL}delete-by-device-id/{instance.device_id}/")
     data = {"device_id":instance.device_id.device_id,**instance.data['system_stats']['system_stats_list']}
     res = requests.post(SYSTEM_UI_URL, data = json.dumps(data), headers=headers)
     print(res.json())
