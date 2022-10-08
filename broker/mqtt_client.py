@@ -13,7 +13,7 @@ def on_connect(subs, obj, flags, rc):
         subs.connected_flag=True #set flag
         print("connected OK")
         print("rc :" + str(rc))
-        subs.subscribe("airpro/device/3981451246")
+        subs.subscribe("airpro/device/2374590439")
     else:
         print("Bad connection Returned code=",rc)
         subs.bad_connection_flag = True
